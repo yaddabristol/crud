@@ -1,0 +1,14 @@
+{
+    "name": "yaddabristol/crud",
+    "description": "Base Crud Controller to extend from",
+    "authors": [
+        {
+            "name": "Yadda",
+            "email": "yadda@yadda.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "5.*"
+    }
+}
