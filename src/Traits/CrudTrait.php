@@ -1,6 +1,6 @@
 <?php
 
-namespace Yadda;
+namespace Yaddabristol\Crud\Traits;
 
 use Illuminate\Http\Request as Request;
 
