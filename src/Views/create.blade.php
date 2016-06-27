@@ -1,12 +1,17 @@
 @extends(config('crud.base_view'))
 
 @section('content')
-    <h1>Create</h1>
+    <div class="container">
+        <h1>Create a new {{ $name_singular }}</h1>
 
-    {!! Form::model([
-        'method' => 'POST',
-        'route' => $route . '.store',
-    ]) !!}
-        @include($views_dir . '.form', ['submitText' => 'Create'])
-    {!! Form::close() !!}
+        {!! Form::model($item, [
+            'method' => 'POST',
+            'route' => $route . '.store',
+        ]) !!}
+            @include($views_dir . '.partials.form', [
+                'item' => $item,
+                'submitText' => 'Create'
+            ])
+        {!! Form::close() !!}
+    </div>
 @endsection
