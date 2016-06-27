@@ -15,38 +15,38 @@ Extendable CRUD controller for quick development.
 * Add `Yadda\Crud\CrudServiceProvider::class` to the `providers` section in `config/app.php`
 * Publish package config
 
-      php artisan vendor:publish
+        php artisan vendor:publish
 
 * Update `config/crud.php` as needed
 * Make a controller that extends `YaddaBristol\Crud\Controllers\CrudController`
 
-      <?php
+        <?php
 
-      namespace App\Html\Controllers;
+        namespace App\Html\Controllers;
 
-      use YaddaBristol\Crud\Controllers\CrudController;
+        use YaddaBristol\Crud\Controllers\CrudController;
 
-      class ThingController extends CrudController
-      {
-          ...
-      }
+        class ThingController extends CrudController
+        {
+            ...
+        }
 
 * Make a model and corresponding database table
 
-      php artisan make:model Thing
-      php artisan make:migration create_thing_table --create=things
+        php artisan make:model Thing
+        php artisan make:migration create_thing_table --create=things
 
 * Override some properties on your controller (see below)
 * Override methods on the controller as needed
 * Maybe define some fields for automatic form creation (see below)
 * Add LaravelCollective's Html provider to `config/app.php`:
 
-      Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
 * Also add the aliases to `config/app.php`
 
-      'Form' => Collective\Html\FormFacade::class,
-      'Html' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
 * Make a website
 
