@@ -7,6 +7,7 @@
         {!! Form::model($item, [
             'method' => 'POST',
             'route' => $route . '.store',
+            'files' => $has_files
         ]) !!}
             @include($views_dir . '.partials.form', [
                 'item' => $item,

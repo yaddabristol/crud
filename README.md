@@ -71,6 +71,7 @@ You'll want to override some of these things in your controller. See the source 
     protected $group_by = 'id';
     protected $has_files = false;
     protected $form_fields = [];
+    protected $table_columns = ['id'];
 
 
 ## Form Generation
@@ -96,7 +97,7 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 
 ### Available Options
 
-* **type** - The type of input to use. Default: `'text'`.
+* **type** - The type of input to use. Options: `checkbox`, `file`, `image`, `radio`, `slug`, `text`, `textarea`, `wysiwyg`. Default: `'text'`.
 * **label** - The text label for your field. Default: the name with first letters capitalised.
 * **placeholder** - The placeholder text. Default: `''`.
 * **help_text** - Extra help text. Default: `''`.
@@ -112,7 +113,10 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 
 ## Gotchas
 
-...
+
+### File uploads
+
+If you add a file upload to a form, you'll need to set `protected $has_files = true;` on your controller.
 
 
 ## Todo

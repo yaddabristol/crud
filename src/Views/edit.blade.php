@@ -7,6 +7,7 @@
         {!! Form::model($item, [
             'method' => 'PATCH',
             'route' => [$route . '.update', $item->id],
+            'files' => $has_files
         ]) !!}
             @include($views_dir . '.partials.form', [
                 'item' => $item,
