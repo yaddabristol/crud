@@ -108,7 +108,9 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 
 ## Usage Notes
 
-...
+### Images
+
+The `image` field type assumes the use of [Laravel Stapler](https://github.com/CodeSleeve/laravel-stapler) for attaching images to models. If you don't want to use that, you can easily override the image field type or create your own. Just copy `crud/src/Views/fields/image.blade.php` to `{YOUR_APP}/resources/views/fields/image.blade.php`.
 
 
 ## Gotchas
