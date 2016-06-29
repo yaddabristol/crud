@@ -5,5 +5,5 @@
     <small class="text-muted">{{ $field['help_text'] }}</small>
   @endif
 
-  <textarea class="form-control wysiwyg" name="{{ $name }}" placeholder="{{ $field['placeholder'] or '' }}" id="input_{{ $name }}" rows="{{ $field['rows'] or 5 }}"{{ (isset($field['required']) && !!$field['required'] ? ' required' : '') }}>{{ $value or '' }}</textarea>
+  <textarea class="form-control wysiwyg medium-editor" name="{{ $name }}" placeholder="{{ $field['placeholder'] or '' }}" id="input_{{ $name }}"{{ (isset($field['required']) && !!$field['required'] ? ' required' : '') }}>{{ $value or '' }}</textarea>
 </fieldset>

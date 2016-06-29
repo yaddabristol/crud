@@ -219,7 +219,7 @@ abstract class CrudController extends BaseController
     {
         $this->beforeStore();
 
-        $this->validate($data, $this->rules, $this->messages);
+        $this->validate($request, $this->rules, $this->messages);
 
         call_user_func($this->model . '::create', request()->all());
 

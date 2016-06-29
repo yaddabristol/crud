@@ -13,6 +13,7 @@ class CrudServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Config/crud.php' => config_path('crud.php'),
+            __DIR__.'/Assets/js/crud.js' => public_path('crud/crud.js'),
         ], 'config');
     }
 

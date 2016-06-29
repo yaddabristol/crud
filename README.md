@@ -12,7 +12,16 @@ Extendable CRUD controller for quick development.
 ## Installation
 
 * `composer require yadda/crud`
-* Add `Yadda\Crud\CrudServiceProvider::class` to the `providers` section in `config/app.php`
+* Add the following to to the `providers` section in `config/app.php`
+
+        Yadda\Crud\CrudServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
+* Add the aliases to `config/app.php`
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+
 * Publish package config
 
         php artisan vendor:publish
@@ -39,15 +48,6 @@ Extendable CRUD controller for quick development.
 * Override some properties on your controller (see below)
 * Override methods on the controller as needed
 * Maybe define some fields for automatic form creation (see below)
-* Add LaravelCollective's Html provider to `config/app.php`:
-
-        Collective\Html\HtmlServiceProvider::class,
-
-* Also add the aliases to `config/app.php`
-
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-
 * Make a website
 
 ## Configuration
@@ -104,6 +104,7 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 * **required** - Make the field required. Defaults to `false`.
 * **source** - Slug fields only. Required. The name of the field to auto-populate content from.
 * **choices** - Radio/select fields only. An array of available choices. Array index represents input value, array key represents input label.
+* **rows** - Textarea fields only. Number of rows height the input area is.
 
 
 ## Usage Notes
