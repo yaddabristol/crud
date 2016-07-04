@@ -14,7 +14,7 @@ Extendable CRUD controller for quick development.
 * `composer require yadda/crud`
 * Add the following to to the `providers` section in `config/app.php`
 
-        Yadda\Crud\CrudServiceProvider::class,
+        Yaddabristol\Crud\CrudServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
 * Add the aliases to `config/app.php`
