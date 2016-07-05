@@ -33,7 +33,7 @@ Extendable CRUD controller for quick development.
 
         namespace App\Html\Controllers;
 
-        use YaddaBristol\Crud\Controllers\CrudController;
+        use Yaddabristol\Crud\Controllers\CrudController;
 
         class ThingController extends CrudController
         {
@@ -116,11 +116,21 @@ The `image` field type assumes the use of [Laravel Stapler](https://github.com/C
 
 ## Gotchas
 
+### Models
+
+Remeber to set up the Fillable fields of the Model, otherwise it will fail with a mass assigment
+exeption on _token.
 
 ### File uploads
 
 If you add a file upload to a form, you'll need to set `protected $has_files = true;` on your controller.
 
+### Development
+
+Need to add line to base-install under autoload - psrp4 when developing from the packages folder: "Yaddabristol\\Crud\\": "packages/yadda/crud/src/".
+
+You'll need to require the laravelcollective/html package from your base install as you'll
+be developing in the packages folder and it won't automatically register it's requirements
 
 ## Todo
 

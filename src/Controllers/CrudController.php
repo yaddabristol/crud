@@ -9,6 +9,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Route;
 
+use Yaddabristol\Crud\Helpers\RouteNameHelper;
+
 abstract class CrudController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -113,33 +115,33 @@ abstract class CrudController extends BaseController
      */
     protected $form_fields = [];
 
+    /**
+     * Separator between entities in the route name. Laravel defaults to '.',
+     * but can be overridden.
+     */
+    protected $route_name_separator = '.';
+
     public function __construct(Request $request)
     {
-        $this->validate($request, [
-            'perpage' => 'numeric|filled',
-            'orderby' => 'string|filled|required_with:order',
-            'order' => 'in:ASC,DESC|filled|required_with:orderby',
-            'search' => 'string'
-        ]);
+        // $this->validate($request, [
+        //     'perpage' => 'numeric|filled',
+        //     'orderby' => 'string|filled|required_with:order',
+        //     'order' => 'in:ASC,DESC|filled|required_with:orderby',
+        //     'search' => 'string'
+        // ]);
 
-        if($request->has('perpage')) $this->settings['perpage'] = $request->get('perpage');
-        if($request->has('orderby')) $this->settings['orderby'] = $request->get('orderby');
-        if($request->has('order')) $this->settings['order'] = $request->get('order');
-        if($request->has('search')) $this->settings['search'] = $request->get('search');
+        // if($request->has('perpage')) $this->settings['perpage'] = $request->get('perpage');
+        // if($request->has('orderby')) $this->settings['orderby'] = $request->get('orderby');
+        // if($request->has('order')) $this->settings['order'] = $request->get('order');
+        // if($request->has('search')) $this->settings['search'] = $request->get('search');
 
-        $this->generateUrlMods();
-
-        // Append current endpoint name to list of classes
-        if(Route::getCurrentRoute()) {
-            $route = explode('.', Route::getCurrentRoute()->getName());
-            array_shift($route);
-            $this->body_classes = $this->body_classes + $route;
-            $this->body_classes[] = implode('-', $route);
-        }
+        // $this->generateUrlMods();
+        // 
+        $this->addRouteToBodyClasses();
 
         view()->share([
-            'url_mods'      => $this->url_mods,
-            'settings'      => $this->settings,
+            // 'url_mods'      => $this->url_mods,
+            // 'settings'      => $this->settings,
             'views_dir'     => $this->views_dir,
             'name_singular' => $this->name_singular,
             'name_plural'   => $this->name_plural,
@@ -151,6 +153,26 @@ abstract class CrudController extends BaseController
         ]);
 
         $this->request = $request;
+    }
+
+    /**
+     * Adds required parts of the current route's name to
+     * $this->body_classes. Or does nothing if this isn't a names route.
+     */
+    protected function addRouteToBodyClasses()
+    {
+        $current_route = Route::getCurrentRoute();
+        $separator = $this->route_name_separator;
+
+        // Splits by name if the route has one, by path if not
+        $route_name = $current_route->getName();
+        if(is_null($route_name)) {
+            $separator = '/';
+            $route_name = $current_route->getPath();
+        }
+
+        $all_parts = (new RouteNameHelper($route_name, $separator))->getAllParts();
+        $this->body_classes = array_merge($this->body_classes, $all_parts);
     }
 
     /**

@@ -18,8 +18,7 @@ class CrudServiceProvider extends ServiceProvider
     }
 
     public function register()
-    {
-
+    {       
+        
     }
-
 }
