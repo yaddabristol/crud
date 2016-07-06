@@ -72,21 +72,10 @@ abstract class CrudController extends BaseController
         'order' => 'ASC'
     ];
 
-    // /**
-    //  * Fields to search by
-    //  */
-    // protected $searchables = ['id'];
-
-    // /**
-    //  * unique ID column to group by (for advanced queries, may require setting
-    //  * to tablename.column)
-    //  */
-    // protected $group_by = 'id';
-
-    // /**
-    //  * Url mods for building pagination appendations
-    //  */
-    // protected $url_mods;
+    /**
+     * Setting for adding additional filtering to the index query.
+     */
+    protected $additional_query_scope_filters = [];
 
     /**
      * Classes to be added to the body tag
@@ -134,28 +123,9 @@ abstract class CrudController extends BaseController
 
         $this->addRouteToBodyClasses();
 
+        // Initialise the IoC container's instance of CrudManager with the settings
+        // from this controller
         crud()->initialize($this);  
-
-        // $this->validate($request, [
-        //     'perpage' => 'numeric|filled',
-        //     'orderby' => 'string|filled|required_with:order',
-        //     'order' => 'in:ASC,DESC|filled|required_with:orderby',
-        //     'search' => 'string'
-        // ]);
-
-        // if($request->has('perpage')) $this->settings['perpage'] = $request->get('perpage');
-        // if($request->has('orderby')) $this->settings['orderby'] = $request->get('orderby');
-        // if($request->has('order')) $this->settings['order'] = $request->get('order');
-        // if($request->has('search')) $this->settings['search'] = $request->get('search');
-
-        // $this->generateUrlMods();
-        // 
-
-        // view()->share([
-        //     'url_mods'      => $this->url_mods,
-        //     'settings'      => $this->settings,
-        // ]);
-
     }
 
     /**
@@ -206,6 +176,10 @@ abstract class CrudController extends BaseController
     {
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
+
+        if(!empty($this->additional_query_scope_filters)) {
+
+        }
 
         if ($request->ajax()) {
             $output = [];
