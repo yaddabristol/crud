@@ -177,10 +177,6 @@ abstract class CrudController extends BaseController
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
 
-        if(!empty($this->additional_query_scope_filters)) {
-
-        }
-
         if ($request->ajax()) {
             $output = [];
 
@@ -215,7 +211,6 @@ abstract class CrudController extends BaseController
      */
     public function create()
     {
-        $this->body_classes[] = 'create';
         $item = new $this->model;
         $data = [
             'item' => $item,
@@ -274,7 +269,6 @@ abstract class CrudController extends BaseController
      */
     public function show(Request $request, $id)
     {
-        $this->body_classes[] = 'show';
         $item = call_user_func($this->model . '::findOrFail', $id);
         $data = compact('item');
 
@@ -298,7 +292,6 @@ abstract class CrudController extends BaseController
      */
     public function edit($id)
     {
-        $this->body_classes[] = 'edit';
         $item = call_user_func($this->model . '::findOrFail', $id);
         $data = [
             'item' => $item,
@@ -366,66 +359,4 @@ abstract class CrudController extends BaseController
 
         return redirect()->route($this->route . '.index')->with('success', $this->name_singular . ' has been deleted.');
     }
-
-    // /**
-    //  * Generate querystring
-    //  * @return None
-    //  */
-    // protected function generateUrlMods()
-    // {
-    //     $mods = [
-    //         'perpage' => "perpage={$this->settings['perpage']}",
-    //         'orderby' => "orderby={$this->settings['orderby']}",
-    //         'order' => "order={$this->settings['order']}",
-    //     ];
-
-    //     if(!empty($this->settings['search'])) {
-    //         $mods['search'] =  "search={$this->settings['search']}";
-    //     }
-
-    //     $this->url_mods = $mods;
-
-    //     return;
-    // }
-
-    // /**
-    //  * Filter query by search parameters
-    //  * @param  Query $query
-    //  * @return Query
-    //  */
-    // protected function doSearch($query)
-    // {
-    //     if(!empty($this->settings['search']) && !empty($this->searchables)) {
-    //         $query->where(function($query) {
-    //             $first = array_shift($this->searchables);
-    //             $query->where("{$first}", 'like', "%{$this->settings['search']}%");
-
-    //             foreach($this->searchables as $column_name) {
-    //                 $query->orWhere("{$column_name}", 'like', "%{$this->settings['search']}%");
-    //             }
-    //         });
-    //     }
-
-    //     return $query;
-    // }
-
-    // protected function finishQuery($query)
-    // {
-    //   $query->orderBy($this->settings['orderby'], $this->settings['order']);
-    //   $query = $this->doSearch($query);
-    //   $query->groupBy($this->group_by);
-
-    //   if($this->paginate) return $query->paginate($this->settings['perpage']);
-    //   else return $query->get();
-    // }
-
-    // /**
-    //  * Add a class to be attached to the body tag
-    //  * @param string $class
-    //  */
-    // public function addBodyClass($class)
-    // {
-    //     $this->body_classes[] = $class;
-    //     view()->share('body_classes', $this->body_classes);
-    // }
 }
