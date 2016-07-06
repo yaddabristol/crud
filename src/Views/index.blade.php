@@ -14,7 +14,7 @@
     <table class="table table-hover">
       <thead>
         @foreach (crud('table_columns') as $name => $value)
-          <th>{{ $name }}</th>
+          <th>{{ $value }}</th>
         @endforeach
         <th>
           Actions

@@ -7,7 +7,7 @@
         {!! Form::model($item, [
             'method' => 'POST',
             'route' => crud('route') . '.store',
-            'files' => crud('has_files')
+            'files' => $has_files
         ]) !!}
             @include(crud('views_dir') . '.partials.form', [
                 'item' => $item,

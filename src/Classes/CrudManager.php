@@ -109,27 +109,31 @@ class CrudManager {
 
     /**
      * Adds an array of fields to the body fields array, removing duplicates
+     * @param   string      $tab_name      tab to add
      * @param   array       $fields        fields to add
      */
-    public function addFormFields($fields)
+    public function addFormFields($tab_name, $fields)
     {
         foreach($fields as $field_name => $field_data) {
-            $this->addFormField($field_name, $field_data);
+            $this->addFormField($tab_name, $field_name, $field_data);
         }
     }
 
     /**
      * Adds a single field to the body fields array, if it isn't already present
+     * @param   string      $tab_name       tab name
      * @param   string      $field_name     field name
-     * @param   string      $field_data     field data to add to array
+     * @param   array       $field_data     field data to add to array
+     * @param   boolean     $overwrite      whether to overwrite existing items if
+     *                                      duplicate is given
      * @return  CrudManager                 $this
      */
-    public function addFormField($field_name, $field_data, $overwrite = false)
+    public function addFormField($tab_name, $field_name, $field_data, $overwrite = true)
     {
         if(!is_array($field_data))
             throw new InvalidCrudInitialisationException("Fields passed to addFormField(s) must be arrays of field data");
 
-        if(!array_key_exists($field_name, $this->form_fields) || $overwrite)
-            $this->form_fields[$field_name] = $field_data;
+        if(!isset($this->form_fields[$tab_name]) || !array_key_exists($field_name, $this->form_fields[$tab_name]) || $overwrite)
+            $this->form_fields[$tab_name][$field_name] = $field_data;
     }
 }
