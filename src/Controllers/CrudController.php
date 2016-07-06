@@ -330,13 +330,6 @@ abstract class CrudController extends BaseController
             'has_files' => $this->has_files
         ];
 
-        crud()->addFormField('extra_field', [
-            'type' => 'text',
-            'label' => 'Extra Field',
-            'placeholder' => 'edit-only-field',
-            'required' => false
-        ]);
-
         if (view()->exists($this->views_dir . '.edit')) {
             return view($this->views_dir . '.edit', $data);
         } else {
