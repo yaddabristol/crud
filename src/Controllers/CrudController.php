@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Route;
 
 use Yaddabristol\Crud\Helpers\RouteNameHelper;
+use Yaddabristol\Crud\Classes\CrudManager;
 
 abstract class CrudController extends BaseController
 {
@@ -121,8 +122,20 @@ abstract class CrudController extends BaseController
      */
     protected $route_name_separator = '.';
 
+    /**
+     * constructed
+     * @var null
+     */
+    protected $crud_manager = null;
+
     public function __construct(Request $request)
     {
+        $this->request = $request;
+
+        $this->addRouteToBodyClasses();
+
+        crud()->initialize($this);  
+
         // $this->validate($request, [
         //     'perpage' => 'numeric|filled',
         //     'orderby' => 'string|filled|required_with:order',
@@ -137,22 +150,12 @@ abstract class CrudController extends BaseController
 
         // $this->generateUrlMods();
         // 
-        $this->addRouteToBodyClasses();
 
-        view()->share([
-            // 'url_mods'      => $this->url_mods,
-            // 'settings'      => $this->settings,
-            'views_dir'     => $this->views_dir,
-            'name_singular' => $this->name_singular,
-            'name_plural'   => $this->name_plural,
-            'body_classes'  => $this->body_classes,
-            'route'         => $this->route,
-            'table_columns' => $this->table_columns,
-            'paginate'      => $this->paginate,
-            'form_fields'   => $this->form_fields,
-        ]);
+        // view()->share([
+        //     'url_mods'      => $this->url_mods,
+        //     'settings'      => $this->settings,
+        // ]);
 
-        $this->request = $request;
     }
 
     /**
@@ -173,6 +176,25 @@ abstract class CrudController extends BaseController
 
         $all_parts = (new RouteNameHelper($route_name, $separator))->getAllParts();
         $this->body_classes = array_merge($this->body_classes, $all_parts);
+    }
+
+    /**
+     * Returns an array of crud-related attributes on this object
+     * 
+     * @return array                name => value pairs array
+     */
+    public function getCrudAttributes()
+    {
+        return [
+            'views_dir'     => $this->views_dir,
+            'name_singular' => $this->name_singular,
+            'name_plural'   => $this->name_plural,
+            'body_classes'  => $this->body_classes,
+            'route'         => $this->route,
+            'table_columns' => $this->table_columns,
+            'paginate'      => $this->paginate,
+            'form_fields'   => $this->form_fields,
+        ];
     }
 
     /**
@@ -307,6 +329,13 @@ abstract class CrudController extends BaseController
             'item' => $item,
             'has_files' => $this->has_files
         ];
+
+        crud()->addFormField('extra_field', [
+            'type' => 'text',
+            'label' => 'Extra Field',
+            'placeholder' => 'edit-only-field',
+            'required' => false
+        ]);
 
         if (view()->exists($this->views_dir . '.edit')) {
             return view($this->views_dir . '.edit', $data);

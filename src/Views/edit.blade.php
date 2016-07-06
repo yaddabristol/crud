@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit a {{ $name_singular }}</h1>
+        <h1>Edit a {{ crud('name_singular') }}</h1>
 
         {!! Form::model($item, [
             'method' => 'PATCH',
-            'route' => [$route . '.update', $item->id],
+            'route' => [crud('route') . '.update', $item->id],
             'files' => $has_files
         ]) !!}
-            @include($views_dir . '.partials.form', [
+            @include(crud('views_dir') . '.partials.form', [
                 'item' => $item,
                 'submitText' => 'Update'
             ])

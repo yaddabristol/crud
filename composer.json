@@ -17,6 +17,9 @@
     "autoload": {
         "psr-4": {
             "Yaddabristol\\Crud\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]        
     }
 }

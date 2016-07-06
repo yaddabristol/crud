@@ -3,8 +3,8 @@
 @section('content')
   <div class="container">
     <h1>
-      {{ $name_plural }}
-      <a href="{{ route($route . '.create') }}" class="btn btn-primary pull-xs-right">Create</a>
+      {{ crud('name_plural') }}
+      <a href="{{ route(crud('route') . '.create') }}" class="btn btn-primary pull-xs-right">Create</a>
     </h1>
 
     <hr>
@@ -13,25 +13,25 @@
 
     <table class="table table-hover">
       <thead>
-        @foreach ($table_columns as $name => $value)
+        @foreach (crud('table_columns') as $name => $value)
           <th>{{ $name }}</th>
         @endforeach
         <th>
           Actions
         </th>
       </thead>
-      <tbody id="{{ strtolower($name_plural) }}">
+      <tbody id="{{ strtolower(crud('name_plural')) }}">
         @foreach ($items as $item)
           <tr>
-            @foreach ($table_columns as $name => $value)
+            @foreach (crud('table_columns') as $name => $value)
               <td>{{ $item->$value }}</td>
             @endforeach
             <td>
               {!! Form::open([
-                'route' => [$route . '.destroy', $item->id],
+                'route' => [crud('route') . '.destroy', $item->id],
                 'method' => 'DELETE'
                 ]) !!}
-                <a href="{{ route($route . '.edit', $item->id) }}" class="btn btn-secondary">Edit</a>
+                <a href="{{ route(crud('route') . '.edit', $item->id) }}" class="btn btn-secondary">Edit</a>
                 <button class="btn btn-danger" type="submit">Delete</button>
                 {!! Form::close() !!}
               </td>

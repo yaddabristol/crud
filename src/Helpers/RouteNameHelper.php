@@ -1,5 +1,11 @@
 <?php namespace Yaddabristol\Crud\Helpers;
 
+/**
+ * Helper to convert a route names into an array of it's constituent
+ * parts, separated by a given separator. IF the first element is empty,
+ * return an array with just 'home' in, as it should only happen when
+ * calling '/' route path.
+ */
 class RouteNameHelper {
 
   protected $route_name;
@@ -25,7 +31,8 @@ class RouteNameHelper {
   /**
    * Returns an array with all single parts of the stored route_name, 
    * along with array_shifted subsections, e.g. admin-things-create, things-create
-   * @return [type] [description]
+   * 
+   * @return array            sections and partials from original string
    */
   public function getAllParts()
   {

@@ -1,5 +1,5 @@
-@if ($paginate)
+@if (crud('paginate'))
   <div class="text-center">
-    {!! $items->appends($settings)->render() !!}
+    {!! $items->render() !!}
   </div>
 @endif

@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        Showing {{ $name_singular }} #{{ $item->id }}
+        Showing {{ crud('name_singular') }} #{{ $item->id }}
     </div>
 @endsection

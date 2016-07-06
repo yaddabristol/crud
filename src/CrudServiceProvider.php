@@ -4,8 +4,15 @@ namespace Yaddabristol\Crud;
 
 use Illuminate\Support\ServiceProvider;
 
+use Yaddabristol\Crud\Classes\CrudManager;
+
 class CrudServiceProvider extends ServiceProvider
 {
+
+    public function provides()
+    {
+        return array('crud.manager');
+    }
 
     public function boot()
     {
@@ -19,6 +26,8 @@ class CrudServiceProvider extends ServiceProvider
 
     public function register()
     {       
-        
+        $this->app->singleton('crud.manager', function() {
+            return new CrudManager();
+        });    
     }
 }

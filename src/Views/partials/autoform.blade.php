@@ -1,4 +1,4 @@
-@foreach ($form_fields as $name => $field)
+@foreach ($fields as $name => $field)
   <?php $data = [
     'name'  => $name,
     'field' => $field,
