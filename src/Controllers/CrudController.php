@@ -11,6 +11,7 @@ use Route;
 
 use Yaddabristol\Crud\Helpers\RouteNameHelper;
 use Yaddabristol\Crud\Classes\CrudManager;
+use Yaddabristol\Crud\Interfaces\Searchable as SearchableInterface;
 
 abstract class CrudController extends BaseController
 {
@@ -176,6 +177,11 @@ abstract class CrudController extends BaseController
     {
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
+
+        if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) && 
+            $this->request->has('search')) {
+            $items->simpleSearch($this->request->get('search'));
+        }
 
         if ($request->ajax()) {
             $output = [];
