@@ -115,7 +115,6 @@ class CrudManager {
     /**
      * Adds a single class to the body classes array, if it isn't already present
      * @param   string      $class          class to add
-     * @return  CrudManager                 $this
      */
     protected function addBodyClass($class)
     {
@@ -172,11 +171,16 @@ class CrudManager {
      * Adds an array of fields to the body fields array, removing duplicates
      * @param   string      $tab_name      tab to add
      * @param   array       $fields        fields to add
+     * @param   boolean     $overwrite     whether to overwrite existing data if duplicate 
+     *                                     field name given
      */
-    public function addFormFields($tab_name, $fields)
+    public function addFormFields($tab_name, $fields, $overwrite = true)
     {
+        if(!is_array($fields) )
+            throw new InvalidCrudInitialisationException("Fields passed to addFormFields must be an array of field data arrays");
+
         foreach($fields as $field_name => $field_data) {
-            $this->addFormField($tab_name, $field_name, $field_data);
+            $this->addFormField($tab_name, $field_name, $field_data, $overwrite);
         }
     }
 
@@ -187,14 +191,59 @@ class CrudManager {
      * @param   array       $field_data     field data to add to array
      * @param   boolean     $overwrite      whether to overwrite existing items if
      *                                      duplicate is given
-     * @return  CrudManager                 $this
      */
     public function addFormField($tab_name, $field_name, $field_data, $overwrite = true)
     {
         if(!is_array($field_data))
-            throw new InvalidCrudInitialisationException("Fields passed to addFormField(s) must be arrays of field data");
+            throw new InvalidCrudInitialisationException("Fields passed to addFormFields must be arrays of field data");
 
         if(!isset($this->form_fields[$tab_name]) || !array_key_exists($field_name, $this->form_fields[$tab_name]) || $overwrite)
             $this->form_fields[$tab_name][$field_name] = $field_data;
+    }
+
+    /**
+     * Defers the removal of a tab -> field combination to a single function, for
+     * running through arrays of fields at once
+     * 
+     * @param  string       $tab_name           Name of tab to remove from
+     * @param  mixed        $field_names        Name of field, or array of names
+     */
+    public function removeFormFields($tab_name, $field_names)
+    {
+        if(is_array($field_names)){
+            foreach($field_names as $field_name) {
+                $this->removeFormField($tab_name, $field_name);
+            }
+        } else {
+            $this->removeFormField($tab_name, $field_names);
+        }
+    }
+
+    /**
+     * Removes a given field from a given tab in the stored form_fields array
+     * 
+     * @param  string       $tab_name           Name of tab to remove from
+     * @param  string       $field_name         Name of field to remove
+     */
+    public function removeFormField($tab_name, $field_name)
+    {
+        if(!stringTest($field_name))
+            throw new InvalidCrudInitialisationException;
+
+        if(isset($this->form_fields[$tab_name]) && isset($this->form_fields[$tab_name][$field_name])) {
+            unset($this->form_fields[$tab_name][$field_name]);
+            $this->unsetTabIfEmpty($tab_name);
+        }
+    }
+
+    /**
+     * Checks whether a given tab name has any fields present, and unsets it if empty
+     * 
+     * @param  string       $tab_name           Name of tab to check
+     */
+    protected function unsetTabIfEmpty($tab_name)
+    {
+        if(isset($this->form_fields[$tab_name]) && empty($this->form_fields[$tab_name]))
+            unset($this->form_fields[$tab_name]);
     }
 }

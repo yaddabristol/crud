@@ -126,4 +126,67 @@ class ExampleTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException(InvalidCrudInitialisationException::class);
         $this->crud->removeBodyClasses(new stdClass);
     }
+
+    /**
+     * @test: Test adding form fields
+     */
+    public function addFormFields()
+    {
+        $form_field = [
+            'title' => [
+                'type' => 'text',
+                'label' => 'Title',
+                'placeholder' => 'The name of the thing',
+                'required' => true
+            ]
+        ];
+
+        $form_fields = [
+            'slug' => [
+                'type' => 'slug',
+                'label' => 'Title',
+                'placeholder' => 'The internal name of the thing',
+                'source' => '',
+                'required' => true
+            ],
+            'content' => [
+                'type' => 'wysiwyg',
+                'label' => 'Content',
+                'placeholder' => 'The things about the thing',
+                'required' => false
+            ]
+        ];
+
+        $this->assertEquals($this->crud->tabsCount(), 2);
+        $this->assertFalse(isset($this->crud->getProperty('form_fields')['Third']));
+
+        $this->crud->addFormFields('Third', $form_field);
+        $this->assertEquals($this->crud->tabsCount(), 3);
+        $this->assertTrue(isset($this->crud->getProperty('form_fields')['Third']));
+        $this->assertEquals(count($this->crud->getProperty('form_fields')['Third']), 1);
+
+        $this->crud->addFormFields('Third', $form_fields);
+        $this->assertEquals(count($this->crud->getProperty('form_fields')['Third']), 3);
+
+        $this->setExpectedException(InvalidCrudInitialisationException::class);
+        $this->crud->addFormFields('Third', 'something-not-allowed');
+        $this->crud->addFormFields('Third', ['test-bad-field' => 'something-not-allowed']);
+    }
+
+    /**
+     * @test: Test removing form fields
+     */
+    public function removeFormFields()
+    {
+        $this->assertTrue(isset($this->crud->getProperty('form_fields')['Main']['content']));
+        $this->crud->removeFormFields('Main', 'content');
+        $this->assertFalse(isset($this->crud->getProperty('form_fields')['Main']['content']));
+        $this->assertEquals($this->crud->tabsCount(), 2);
+
+        $this->crud->removeFormFields('Main', ['title', 'slug']);
+        $this->assertEquals($this->crud->tabsCount(), 1);
+
+        $this->crud->removeFormFields('SEO', ['meta_title']);
+        $this->assertEquals($this->crud->getProperty('form_fields'), []);
+    }
 }
