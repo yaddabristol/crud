@@ -1,4 +1,4 @@
-<fieldset class="form-group">
+<fieldset class="form-group {{ $field['fieldset_class'] or '' }}">
   <label>
     <input type="checkbox" name="{{ $name }}" value="{{ $field['value'] or '1' }}" {{ ($value ? 'checked' : '') }}>
 

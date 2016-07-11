@@ -1,4 +1,4 @@
-<fieldset class="form-group">
+<fieldset class="form-group {{ $field['fieldset_class'] or '' }}">
   <label for="input_{{ $name }}">{{ $field['label'] or ucwords($name) }}</label>
 
   @if (isset($field['help_text']))

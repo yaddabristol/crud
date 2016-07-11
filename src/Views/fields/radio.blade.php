@@ -1,4 +1,4 @@
-<fieldset class="form-group">
+<fieldset class="form-group {{ $field['fieldset_class'] or '' }}">
   <p>
     {{ $field['label'] }}
     @if (isset($field['help_text']))
