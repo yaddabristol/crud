@@ -10,7 +10,7 @@
   @foreach ($field['choices'] as $choice_value => $choice_name)
     <div class="radio">
       <label>
-        <input type="radio" name="{{ $name }}" value="{{ $choice_value }}">
+        <input type="radio" name="{{ $name }}" value="{{ $choice_value }}" {{ isset($field['default']) && $field['default'] == $choice_value ? 'checked="checked"' : ''}}>
         {{ $choice_name }}
       </label>
     </div>
