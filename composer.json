@@ -21,8 +21,7 @@
             "Yaddabristol\\CrudTest\\": "tests/"
         },
         "files": [
-            "src/helpers.php",
-            "vendor/phpunit/phpunit/src/Framework/TestCase.php"
+            "src/helpers.php"
         ]        
     }
 }
