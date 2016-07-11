@@ -10,7 +10,7 @@ if (! function_exists('crud')) {
         if(is_null($attribute_name))
           return app('crud.manager');
         else
-          return app('crud.manager')->$attribute_name;
+          return app('crud.manager')->getProperty($attribute_name);
     }
 }
 
