@@ -1,6 +1,6 @@
 <fieldset class="form-group {{ $field['fieldset_class'] or '' }} {{ $errors->get($name) ? 'has-error has-danger' : '' }}">
   <div>
-    {{ $field['label'] }}
+    {{ $field['label'] or ucwords($name) }}
     @if (isset($field['help_text']))
       <br><small class="text-muted">{{ $field['help_text'] }}</small>
     @endif
