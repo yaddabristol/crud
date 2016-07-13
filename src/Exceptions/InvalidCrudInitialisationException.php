@@ -2,8 +2,9 @@
 
 use Exception;
 
-class InvalidCrudInitialisationException extends Exception
-{
-
-  
-}
+/**
+ * @todo    Document this!
+ * @author  Andrew Ellender <andrew@yadda.co.uk>
+ * @license MIT
+ */
+class InvalidCrudInitialisationException extends Exception {}

@@ -13,6 +13,13 @@ use Yaddabristol\Crud\Helpers\RouteNameHelper;
 use Yaddabristol\Crud\Classes\CrudManager;
 use Yaddabristol\Crud\Interfaces\Searchable as SearchableInterface;
 
+/**
+ * Http controller for CRUD
+ *
+ * @author  Jake Gully <jake@yadda.co.uk>
+ * @author  Andrew Ellender <andrew@yadda.co.uk>
+ * @license MIT
+ */
 abstract class CrudController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -26,7 +33,7 @@ abstract class CrudController extends BaseController
     protected $model = null;
 
     /**
-     * The directory that views are stored in. E.g. 'admin.model'
+     * Directory that views are stored in. E.g. 'admin.model'
      *
      * @var string
      */
@@ -196,6 +203,7 @@ abstract class CrudController extends BaseController
     /**
      * Returns an array of crud-related attributes on this object
      *
+     * @api
      * @return array Name=>value pairs
      */
     public function getCrudAttributes()
@@ -215,6 +223,7 @@ abstract class CrudController extends BaseController
     /**
      * Display a listing of the resource
      *
+     * @api
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -257,6 +266,7 @@ abstract class CrudController extends BaseController
     /**
      * Show the form for creating a new resource
      *
+     * @api
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -279,6 +289,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before the item create form is displayed
      *
+     * @api
      * @return void
      */
     public function beforeCreate() {}
@@ -286,6 +297,7 @@ abstract class CrudController extends BaseController
     /**
      * Save the details from the create form to the database
      *
+     * @api
      * @param  Request $request
      * @return \Illuminate\Http\Response
      */
@@ -312,6 +324,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before data is validated and stored
      *
+     * @api
      * @return Void
      */
     protected function beforeStore() {}
@@ -319,6 +332,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for after data has been stored
      *
+     * @api
      * @return Void
      */
     protected function afterStore() {}
@@ -326,6 +340,7 @@ abstract class CrudController extends BaseController
     /**
      * Display the specified resource
      *
+     * @api
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -351,17 +366,11 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before an item page is displayed
      *
+     * @api
      * @return void
      */
     public function beforeShow() {}
 
-
-    /**
-     * Show the form for editing the specified resource
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $this->item = call_user_func($this->model . '::findOrFail', $id);
@@ -383,14 +392,15 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before the edit page is displayed
      *
+     * @api
      * @return void
      */
     public function beforeEdit() {}
 
-
     /**
      * Update the specified resource in storage
      *
+     * @api
      * @param  \App\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -417,6 +427,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before data is validated and saved
      *
+     * @api
      * @return None
      */
     protected function beforeUpdate() {}
@@ -424,6 +435,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for after data has been saved
      *
+     * @api
      * @return None
      */
     protected function afterUpdate() {}
@@ -431,6 +443,7 @@ abstract class CrudController extends BaseController
     /**
      * Remove the specified resource from storage
      *
+     * @api
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -446,6 +459,7 @@ abstract class CrudController extends BaseController
     /**
      * Hook for before item is destroyed
      *
+     * @api
      * @return void
      */
     public function beforeDestroy() {}

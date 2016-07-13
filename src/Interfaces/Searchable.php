@@ -1,6 +1,11 @@
 <?php namespace Yaddabristol\Crud\Interfaces;
 
-interface Searchable 
+/**
+ * @todo    Document this!
+ * @author  Andrew Ellender <andrew@yadda.co.uk>
+ * @license MIT
+ */
+interface Searchable
 {
 
   function getSearchables();
