@@ -10,7 +10,11 @@
   @foreach ($field['choices'] as $choice_value => $choice_name)
     <div class="radio">
       <label>
-        {!! Form::radio($name, $choice_value) !!}
+        {!! Form::radio(
+          $name,
+          $choice_value,
+          old($name, (isset($field['default']) ? $field['default'] : null)) === $choice_value
+        ) !!}
         {{ $choice_name }}
       </label>
     </div>
