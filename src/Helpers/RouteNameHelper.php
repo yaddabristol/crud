@@ -10,11 +10,13 @@ class RouteNameHelper {
 
   protected $route_name;
   protected $separator;
+  protected $route_prefix;
 
-  public function __construct($route_name, $separator)
+  public function __construct($route_name, $separator, $route_prefix = 'route-')
   {
     $this->route_name = $route_name;
     $this->separator = $separator;
+    $this->route_prefix = $route_prefix;
   }
 
   /**
@@ -48,6 +50,19 @@ class RouteNameHelper {
       array_shift($parts);
     }
 
-    return $all_parts;
+    return $this->addRoutePrefixToClasses($all_parts);
+  }
+
+  /**
+   * Adds a given route prefix to all classes passed in
+   * 
+   * @param  array    $classes    array of class strings
+   * @return array    $classes    modified array
+   */
+  public function addRoutePrefixToClasses($classes)
+  {
+    foreach($classes as $index => $class)
+      $classes[$index] = $this->route_prefix . $class;
+    return $classes;
   }
 }

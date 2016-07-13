@@ -49,6 +49,13 @@ abstract class CrudController extends BaseController
     protected $route = 'admin.base';
 
     /**
+     * String to prefix all classes discovered by the RouteNameHelper
+     * with
+     * @var string
+     */
+    protected $route_class_prefix = 'route-';
+
+    /**
      * Basic validation rules. You may want to alter this in custom
      * doUpdate or doStore methods if they aren't the same.
      */
@@ -107,8 +114,8 @@ abstract class CrudController extends BaseController
     protected $form_fields = [];
 
     /**
-     * Separator between entities in the route name. Laravel defaults to '.',
-     * but can be overridden.
+     * Separator between entities in the route name. Laravel defaults to '.' 
+     * and should mostly be left as such, but can be overridden.
      */
     protected $route_name_separator = '.';
 
@@ -135,7 +142,7 @@ abstract class CrudController extends BaseController
      */
     protected function addRouteToBodyClasses()
     {
-        $current_route = Route::getCurrentRoute();
+        $current_route = $this->request->route();
         $separator = $this->route_name_separator;
 
         // Splits by name if the route has one, by path if not
@@ -145,7 +152,7 @@ abstract class CrudController extends BaseController
             $route_name = $current_route->getPath();
         }
 
-        $all_parts = (new RouteNameHelper($route_name, $separator))->getAllParts();
+        $all_parts = (new RouteNameHelper($route_name, $separator, $this->route_class_prefix))->getAllParts();
         $this->body_classes = array_merge($this->body_classes, $all_parts);
     }
 

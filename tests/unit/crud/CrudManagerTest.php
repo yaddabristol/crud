@@ -4,7 +4,7 @@ use Yaddabristol\Crud\Exceptions\InvalidCrudInitialisationException;
 
 use Yaddabristol\Crud\Classes\CrudManager;
 
-class ExampleTest extends PHPUnit_Framework_TestCase
+class CrudManagerTest extends PHPUnit_Framework_TestCase
 {
     protected $crud;
 
