@@ -18,7 +18,7 @@
             'route' => [crud('route') . '.update', $item->id],
             'files' => $has_files
         ]) !!}
-            @if (view()->exists(crud('views_dir') . 'partials.form'))
+            @if (view()->exists(crud('views_dir') . '.partials.form'))
                 @include(crud('views_dir') . '.partials.form', [
                     'item' => $item,
                     'submitText' => 'Update'
