@@ -281,6 +281,8 @@ abstract class CrudController extends BaseController
 
         $this->beforeCreate();
 
+        $data = array_merge($data, $this->data);
+
         if (view()->exists($this->views_dir . '.create')) {
             return view($this->views_dir . '.create', $data);
         } else {
@@ -377,12 +379,14 @@ abstract class CrudController extends BaseController
     {
         $this->item = call_user_func($this->model . '::findOrFail', $id);
 
-        $this->beforeEdit();
-
         $data = [
             'item' => $this->item,
             'has_files' => $this->has_files
         ];
+
+        $this->beforeEdit();
+
+        $data = array_merge($data, $this->data);
 
         if (view()->exists($this->views_dir . '.edit')) {
             return view($this->views_dir . '.edit', $data);
