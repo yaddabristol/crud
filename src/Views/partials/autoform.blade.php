@@ -4,11 +4,13 @@
 
   @foreach ($fields as $tab_name => $tab)
 
-    @include('crud::partials.nav_panel_open', [
-      'parent_array' => $fields, 
-      'current_item' => $tab,
-      'tab_name' => $tab_name
-    ])
+    @if (crud()->tabsCount() > 1)
+      @include('crud::partials.nav_panel_open', [
+        'parent_array' => $fields,
+        'current_item' => $tab,
+        'tab_name' => $tab_name
+      ])
+    @endif
 
       @foreach($tab as $name => $field)
         <?php $data = [
@@ -29,7 +31,9 @@
         @endif
       @endforeach
 
-    </div>
+    @if (crud()->tabsCount() > 1)
+      </div>
+    @endif
 
   @endforeach
 
