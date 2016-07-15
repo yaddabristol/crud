@@ -95,7 +95,7 @@ class CrudManager {
             throw new InvalidCrudInitialisationException("Data passed in incorrect format");
 
         foreach($attributes as $attribute_name => $attribute_value) {
-            if(!in_array($attribute_name, $this->allowed_attirbutes))
+            if(!in_array($attribute_name, $this->allowed_attributes))
                 throw new InvalidCrudInitialisationException("Attempted to set unrecognised value: {$attribute_name}");
 
             $this->$attribute_name = $attribute_value;
