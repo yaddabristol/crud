@@ -190,14 +190,16 @@ abstract class CrudController extends BaseController
         $separator = $this->route_name_separator;
 
         // Splits by name if the route has one, by path if not
-        $route_name = $current_route->getName();
-        if(is_null($route_name)) {
-            $separator = '/';
-            $route_name = $current_route->getPath();
-        }
+        if(!empty($current_route)) {
+            $route_name = $current_route->getName();
+            if(is_null($route_name)) {
+                $separator = '/';
+                $route_name = $current_route->getPath();
+            }
 
-        $all_parts = (new RouteNameHelper($route_name, $separator, $this->route_class_prefix))->getAllParts();
-        $this->body_classes = array_merge($this->body_classes, $all_parts);
+            $all_parts = (new RouteNameHelper($route_name, $separator, $this->route_class_prefix))->getAllParts();
+            $this->body_classes = array_merge($this->body_classes, $all_parts);
+        }
     }
 
     /**
