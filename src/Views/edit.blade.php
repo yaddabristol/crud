@@ -18,10 +18,17 @@
             'route' => [crud('route') . '.update', $item->id],
             'files' => $has_files
         ]) !!}
-            @include(crud('views_dir') . '.partials.form', [
-                'item' => $item,
-                'submitText' => 'Update'
-            ])
+            @if (view()->exists(crud('views_dir') . 'partials.form'))
+                @include(crud('views_dir') . '.partials.form', [
+                    'item' => $item,
+                    'submitText' => 'Update'
+                ])
+            @else
+                @include('crud::partials.form', [
+                    'item' => $item,
+                    'submitText' => 'Update'
+                ])
+            @endif
         {!! Form::close() !!}
     </div>
 @endsection
