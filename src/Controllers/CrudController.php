@@ -456,7 +456,7 @@ abstract class CrudController extends BaseController
     public function destroy($id)
     {
         $this->item = call_user_func($this->model . '::findOrFail', $id);
-        $this->beforeDelete();
+        $this->beforeDestroy();
         $this->item->delete();
 
         return redirect()->route($this->route . '.index')->with('success', $this->name_singular . ' has been deleted.');
