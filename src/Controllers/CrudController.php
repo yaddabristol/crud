@@ -167,11 +167,27 @@ abstract class CrudController extends BaseController
      */
     protected $item = null;
 
+    protected $after_store_route = null;
+    protected $after_update_route = null;
+    protected $after_destroy_route = null;
+
     public function __construct(Request $request)
     {
         $this->request = $request;
 
         $this->addRouteToBodyClasses();
+
+        if (is_null($this->after_store_route)) {
+            $this->after_store_route = $this->route.'.index';
+        }
+
+        if (is_null($this->after_update_route)) {
+            $this->after_update_route = $this->route.'.index';
+        }
+
+        if (is_null($this->after_destroy_route)) {
+            $this->after_destroy_route = $this->route.'.index';
+        }
 
         // Initialise the IoC container's instance of CrudManager with
         // the settings from this controller
@@ -321,7 +337,9 @@ abstract class CrudController extends BaseController
                 'data' => null
             ]);
         } else {
-            return redirect()->route($this->route . '.index')->with('success', $this->name_singular . ' was created successfully.');
+            return redirect()
+                ->route($this->after_store_route)
+                ->with('success', $this->name_singular . ' was created successfully.');
         }
     }
 
@@ -426,7 +444,7 @@ abstract class CrudController extends BaseController
                 'data' => null
             ]);
         } else {
-            return redirect()->route($this->route . '.index');
+            return redirect()->route($this->after_update_route);
         }
     }
 
@@ -459,7 +477,9 @@ abstract class CrudController extends BaseController
         $this->beforeDestroy();
         $this->item->delete();
 
-        return redirect()->route($this->route . '.index')->with('success', $this->name_singular . ' has been deleted.');
+        return redirect()
+            ->route($this->after_destroy_route)
+            ->with('success', $this->name_singular . ' has been deleted.');
     }
 
     /**
