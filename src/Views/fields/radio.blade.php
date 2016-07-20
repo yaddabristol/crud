@@ -15,7 +15,9 @@
         {!! Form::radio(
           $name,
           $choice_value,
-          old($name, (isset($field['default']) ? $field['default'] : null)) === $choice_value
+          old($name, (isset($field['default']) ? $field['default'] : null)) === $choice_value, [
+            'class' =>  (isset($field['class']) ? $field['class'] : '')
+          ]
         ) !!}
         {{ $choice_name }}
       </label>

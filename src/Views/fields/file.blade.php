@@ -3,7 +3,7 @@
 
   {!! Form::file($name, [
     'id' => "input_$name",
-    'class' => 'form-control-file',
+    'class' => 'form-control-file ' . (isset($field['class']) ? $field['class'] : ''),
     'required' => isset($field['required']) && !!$field['required'] ? 'required' : null
   ]) !!}
 

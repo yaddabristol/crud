@@ -3,7 +3,7 @@
 
   {!! Form::text($name, isset($field['default']) ? $field['default'] : null, [
     'id'          => "input_$name",
-    'class'       => 'form-control',
+    'class'       => 'form-control ' . (isset($field['class']) ? $field['class'] : ''),
     'required'    => (isset($field['required']) && !!$field['required'] ? 'required' : null),
     'placeholder' => isset($field['placeholder']) ? $field['placeholder'] : null
   ]) !!}
