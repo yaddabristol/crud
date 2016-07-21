@@ -113,13 +113,16 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 
 The `image` field type assumes the use of [Laravel Stapler](https://github.com/CodeSleeve/laravel-stapler) for attaching images to models. If you don't want to use that, you can easily override the image field type or create your own. Just copy `crud/src/Views/fields/image.blade.php` to `{YOUR_APP}/resources/views/fields/image.blade.php`.
 
+### Default Values
+
+To add default values in a create form, set `protected $attributes = [];` on your model.
 
 ## Gotchas
 
 ### Models
 
-Remeber to set up the Fillable fields of the Model, otherwise it will fail with a mass assigment
-exeption on _token.
+Remember to set up the Fillable fields of the Model, otherwise it will fail with a mass assignment
+exception on `_token`.
 
 ### File uploads
 
@@ -127,7 +130,7 @@ If you add a file upload to a form, you'll need to set `protected $has_files = t
 
 ### Development
 
-Need to add line to base-install under autoload - psrp4 when developing from the packages folder: "Yaddabristol\\Crud\\": "packages/yadda/crud/src/".
+Need to add line to base-install under autoload - PSR4 when developing from the packages folder: "Yaddabristol\\Crud\\": "packages/yadda/crud/src/".
 
 You'll need to require the laravelcollective/html package from your base install as you'll
 be developing in the packages folder and it won't automatically register it's requirements

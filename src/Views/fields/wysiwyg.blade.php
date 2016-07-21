@@ -13,7 +13,7 @@
     </div>
   @endif
 
-  {!! Form::textarea($name, isset($field['default']) ? $field['default'] : null, [
+  {!! Form::textarea($name, old($name, null), [
     'id'          => "input_$name",
     'class'       => 'form-control wysiwyg medium-editor ' . (isset($field['class']) ? $field['class'] : ''),
     'required'    => (isset($field['required']) && !!$field['required'] ? 'required' : null),

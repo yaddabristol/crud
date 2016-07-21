@@ -4,7 +4,7 @@
   {!! Form::select(
     $name,
     $field['choices'],
-    old($name, (isset($field['default']) ? $field['default'] : null)),
+    old($name, null),
     [
       'id'          => "input_$name",
       'class'       => 'form-control ' . (isset($field['class']) ? $field['class'] : ''),
