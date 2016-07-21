@@ -3,7 +3,7 @@
 
   {!! Form::select(
     $name,
-    $field['choices'],
+    crud()->getSelectOptions($tab_name, $name),
     old($name, null),
     [
       'id'          => "input_$name",

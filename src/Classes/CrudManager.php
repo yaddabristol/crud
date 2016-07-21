@@ -205,7 +205,7 @@ class CrudManager {
     public function addFormFields($tab_name, $fields, $overwrite = true)
     {
         if(!is_array($fields) )
-            throw new InvalidCrudInitialisationException("Fields passed to addFormFields must be an array of field data arrays");
+            throw new InvalidCrudFormFieldException("Fields passed to addFormFields must be an array of field data arrays");
 
         foreach($fields as $field_name => $field_data) {
             $this->addFormField($tab_name, $field_name, $field_data, $overwrite);
@@ -223,7 +223,7 @@ class CrudManager {
     public function addFormField($tab_name, $field_name, $field_data, $overwrite = true)
     {
         if(!is_array($field_data))
-            throw new InvalidCrudInitialisationException("Fields passed to addFormFields must be arrays of field data");
+            throw new InvalidCrudFormFieldException("Fields passed to addFormFields must be arrays of field data");
 
         if(!isset($this->form_fields[$tab_name]) || !array_key_exists($field_name, $this->form_fields[$tab_name]) || $overwrite)
             $this->form_fields[$tab_name][$field_name] = $field_data;
@@ -238,7 +238,7 @@ class CrudManager {
      */
     public function removeFormFields($tab_name, $field_names)
     {
-        if(is_array($field_names)){
+        if (is_array($field_names)) {
             foreach($field_names as $field_name) {
                 $this->removeFormField($tab_name, $field_name);
             }
@@ -255,10 +255,11 @@ class CrudManager {
      */
     public function removeFormField($tab_name, $field_name)
     {
-        if(!stringTest($field_name))
-            throw new InvalidCrudInitialisationException;
+        if (!stringTest($field_name)) {
+            throw new InvalidCrudFormFieldException('Invalid form field name');
+        }
 
-        if(isset($this->form_fields[$tab_name]) && isset($this->form_fields[$tab_name][$field_name])) {
+        if (isset($this->form_fields[$tab_name]) && isset($this->form_fields[$tab_name][$field_name])) {
             unset($this->form_fields[$tab_name][$field_name]);
             $this->unsetTabIfEmpty($tab_name);
         }
@@ -273,5 +274,32 @@ class CrudManager {
     {
         if(isset($this->form_fields[$tab_name]) && empty($this->form_fields[$tab_name]))
             unset($this->form_fields[$tab_name]);
+    }
+
+    public function getSelectOptions($tab_name, $field_name)
+    {
+        if (!stringTest($field_name)) {
+            throw new InvalidCrudFormFieldException('Invalid form field name');
+        }
+
+        if (isset($this->form_fields[$tab_name]) && isset($this->form_fields[$tab_name][$field_name])) {
+            $form_field = $this->form_fields[$tab_name][$field_name];
+        }
+
+        $manual_choices = isset($form_field['choices']) ? $form_field['choices'] : [];
+
+        if (!stringTest($form_field['model'])) {
+            return $manual_choices;
+        }
+
+        $val_col = stringTest($form_field['value_column']) ? $form_field['value_column'] : 'id';
+
+        if (!stringTest($form_field['name_column'])) {
+            throw new InvalidCrudFormFieldException('Invalid form field name');
+        }
+
+        $db_choices = call_user_func($form_field['model'] . '::lists', $form_field['name_column'], $val_col)->toArray();
+
+        return $manual_choices + $db_choices;
     }
 }
