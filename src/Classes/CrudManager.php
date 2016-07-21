@@ -292,7 +292,7 @@ class CrudManager {
             return $manual_choices;
         }
 
-        $val_col = stringTest($form_field['value_column']) ? $form_field['value_column'] : 'id';
+        $val_col = isset($form_field['value_column']) && stringtest($form_field['value_column']) ? $form_field['value_column'] : 'id';
 
         if (!stringTest($form_field['name_column'])) {
             throw new InvalidCrudFormFieldException('Invalid form field name');
