@@ -312,7 +312,7 @@ abstract class CrudController extends BaseController
      * @api
      * @return void
      */
-    public function beforeCreate() {}
+    protected function beforeCreate() {}
 
     /**
      * Save the details from the create form to the database
@@ -391,7 +391,7 @@ abstract class CrudController extends BaseController
      * @api
      * @return void
      */
-    public function beforeShow() {}
+    protected function beforeShow() {}
 
     public function edit($id)
     {
@@ -419,7 +419,7 @@ abstract class CrudController extends BaseController
      * @api
      * @return void
      */
-    public function beforeEdit() {}
+    protected function beforeEdit() {}
 
     /**
      * Update the specified resource in storage
@@ -488,5 +488,5 @@ abstract class CrudController extends BaseController
      * @api
      * @return void
      */
-    public function beforeDestroy() {}
+    protected function beforeDestroy() {}
 }
