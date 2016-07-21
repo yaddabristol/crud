@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Route;
 
+use Yaddabristol\Crud\Helpers\RedirectHelper;
 use Yaddabristol\Crud\Helpers\RouteNameHelper;
 use Yaddabristol\Crud\Classes\CrudManager;
 use Yaddabristol\Crud\Interfaces\Searchable as SearchableInterface;
@@ -167,27 +168,33 @@ abstract class CrudController extends BaseController
      */
     protected $item = null;
 
-    protected $after_store_route = null;
-    protected $after_update_route = null;
-    protected $after_destroy_route = null;
+    /**
+     * Routes to redirect to after the given actions
+     *
+     * @var array
+     */
+    protected $redirect_routes = [
+        'store'   => 'index',
+        'update'  => 'index',
+        'destroy' => 'index',
+    ];
+
+    /**
+     * Class to use to work out dynamically redirect after
+     * successful form submissions
+     *
+     * @var string
+     */
+    protected $redirect_helper_class = RedirectHelper::class;
 
     public function __construct(Request $request)
     {
+        $this->setupRedirectRoutes();
+
         $this->request = $request;
+        $this->redirector = new $this->redirect_helper_class($this);
 
         $this->addRouteToBodyClasses();
-
-        if (is_null($this->after_store_route)) {
-            $this->after_store_route = $this->route.'.index';
-        }
-
-        if (is_null($this->after_update_route)) {
-            $this->after_update_route = $this->route.'.index';
-        }
-
-        if (is_null($this->after_destroy_route)) {
-            $this->after_destroy_route = $this->route.'.index';
-        }
 
         // Initialise the IoC container's instance of CrudManager with
         // the settings from this controller
@@ -337,8 +344,8 @@ abstract class CrudController extends BaseController
                 'data' => null
             ]);
         } else {
-            return redirect()
-                ->route($this->after_store_route)
+            return $this->redirector
+                ->getRedirect('store')
                 ->with('success', $this->name_singular . ' was created successfully.');
         }
     }
@@ -444,9 +451,9 @@ abstract class CrudController extends BaseController
                 'data' => null
             ]);
         } else {
-            return redirect()
-                ->route($this->after_update_route)
-                ->with('success', $this->name_singular . ' was created successfully.');
+            return $this->redirector
+                ->getRedirect('store')
+                ->with('success', $this->name_singular . ' was updated successfully.');
         }
     }
 
@@ -479,8 +486,8 @@ abstract class CrudController extends BaseController
         $this->beforeDestroy();
         $this->item->delete();
 
-        return redirect()
-            ->route($this->after_destroy_route)
+        return $this->redirector
+            ->getRedirect('destroy')
             ->with('success', $this->name_singular . ' has been deleted.');
     }
 
@@ -491,4 +498,47 @@ abstract class CrudController extends BaseController
      * @return void
      */
     protected function beforeDestroy() {}
+
+    /**
+     * Get base route for this controller
+     * @return string
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * Get request
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * Get the redirect routes array
+     * @return array
+     */
+    public function getRedirectRoutes()
+    {
+        return $this->redirect_routes;
+    }
+
+    /**
+     * Prepends the routes in redirect_routes with the base route. You might
+     * want to override this function in your own controller.
+     *
+     * @return void
+     */
+    protected function setupRedirectRoutes()
+    {
+        $this->redirect_routes = [
+            'store'   => $this->route . $this->route_name_separator . $this->redirect_routes['store'],
+            'update'  => $this->route . $this->route_name_separator . $this->redirect_routes['update'],
+            'destroy' => $this->route . $this->route_name_separator . $this->redirect_routes['destroy'],
+        ];
+    }
+
 }
