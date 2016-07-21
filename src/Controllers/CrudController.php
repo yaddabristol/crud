@@ -444,7 +444,9 @@ abstract class CrudController extends BaseController
                 'data' => null
             ]);
         } else {
-            return redirect()->route($this->after_update_route);
+            return redirect()
+                ->route($this->after_update_route)
+                ->with('success', $this->name_singular . ' was created successfully.');
         }
     }
 

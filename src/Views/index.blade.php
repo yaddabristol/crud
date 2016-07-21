@@ -11,6 +11,8 @@
 
     @include('crud::partials.index_head')
 
+    @include('crud::partials.messages')
+
     <table class="table table-hover">
       <thead>
         @foreach (crud('table_columns') as $name => $value)
