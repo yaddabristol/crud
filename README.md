@@ -135,6 +135,12 @@ Need to add line to base-install under autoload - PSR4 when developing from the 
 You'll need to require the laravelcollective/html package from your base install as you'll
 be developing in the packages folder and it won't automatically register it's requirements
 
+## Documentation
+
+To generate the docs use apigen:
+
+    apigen generate -s src -d docs
+
 ## Todo
 
 * Split out search stuff into a separate trait
