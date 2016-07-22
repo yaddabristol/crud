@@ -9,6 +9,7 @@
       'id'          => "input_$name",
       'class'       => 'form-control ' . (isset($field['class']) ? $field['class'] : ''),
       'required'    => (isset($field['required']) && !!$field['required'] ? 'required' : null),
+      'multiple'    => (isset($field['multiple']) && !!$field['multiple'] ? 'multiple' : null),
       'placeholder' => isset($field['placeholder']) ? $field['placeholder'] : null,
     ]
   ) !!}
