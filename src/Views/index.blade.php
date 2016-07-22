@@ -16,7 +16,7 @@
     <table class="table table-hover">
       <thead>
         @foreach (crud('table_columns') as $name => $value)
-          <th>{{ $value }}</th>
+          <th>{{ (is_numeric($name) ? $value : $name ) }}</th>
         @endforeach
         <th>
           Actions
