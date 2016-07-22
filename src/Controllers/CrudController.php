@@ -438,10 +438,10 @@ abstract class CrudController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $this->beforeUpdate();
         $this->validate($request, $this->rules, $this->messages);
-        $data = array_merge(request()->all(), $this->data);
         $this->item = call_user_func($this->model . '::findOrFail', $id);
+        $this->beforeUpdate();
+        $data = array_merge(request()->all(), $this->data);
         $this->item->update($data);
         $this->afterUpdate();
 
