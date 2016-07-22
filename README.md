@@ -99,12 +99,18 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 
 * **type** - The type of input to use. Options: `checkbox`, `file`, `image`, `radio`, `slug`, `text`, `textarea`, `wysiwyg`. Default: `'text'`.
 * **label** - The text label for your field. Default: the name with first letters capitalised.
+* **class** - Additional class[es] to apply to the input element.
+* **fieldset_class** - Additional class[es] to apply to the fieldset element.
 * **placeholder** - The placeholder text. Default: `''`.
 * **help_text** - Extra help text. Default: `''`.
 * **required** - Make the field required. Defaults to `false`.
 * **source** - Slug fields only. Required. The name of the field to auto-populate content from.
-* **choices** - Radio/select fields only. An array of available choices. Array index represents input value, array key represents input label.
 * **rows** - Textarea fields only. Number of rows height the input area is.
+* **choices** - Radio/select fields only. An array of available choices. Array index represents input value, array key represents input label.
+* **model** - Select fields only. A model to get choices from. See also `name_column` and `value_column`.
+* **name_column** - Select fields only. The column name on `model` to use as a label.
+* **value_column** - Select fields only. The column name on `model` to use as a value. Defaults to `'id'`.
+* **multiple** - Select fields only. Allow selecting multiple values.
 
 
 ## Usage Notes
