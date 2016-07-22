@@ -42,6 +42,11 @@
 
 						</li>
 				<li>
+					<a href="namespace-Yaddabristol.Crud.Commands.html">
+						Commands					</a>
+
+						</li>
+				<li>
 					<a href="namespace-Yaddabristol.Crud.Controllers.html">
 						Controllers					</a>
 
@@ -78,8 +83,10 @@
 			<ul>
 				<li><a href="class-TestCase.html">TestCase</a></li>
 				<li><a href="class-Yaddabristol.Crud.Classes.CrudManager.html">Yaddabristol\Crud\Classes\CrudManager</a></li>
+				<li><a href="class-Yaddabristol.Crud.Commands.MigrationGenerator.html">Yaddabristol\Crud\Commands\MigrationGenerator</a></li>
 				<li><a href="class-Yaddabristol.Crud.Controllers.CrudController.html">Yaddabristol\Crud\Controllers\CrudController</a></li>
 				<li><a href="class-Yaddabristol.Crud.CrudServiceProvider.html">Yaddabristol\Crud\CrudServiceProvider</a></li>
+				<li><a href="class-Yaddabristol.Crud.Helpers.RedirectHelper.html">Yaddabristol\Crud\Helpers\RedirectHelper</a></li>
 				<li><a href="class-Yaddabristol.Crud.Helpers.RouteNameHelper.html">Yaddabristol\Crud\Helpers\RouteNameHelper</a></li>
 			</ul>
 
@@ -95,6 +102,7 @@
 
 			<h3>Exceptions</h3>
 			<ul>
+				<li><a href="class-Yaddabristol.Crud.Exceptions.InvalidCrudFormFieldException.html">Yaddabristol\Crud\Exceptions\InvalidCrudFormFieldException</a></li>
 				<li><a href="class-Yaddabristol.Crud.Exceptions.InvalidCrudInitialisationException.html">Yaddabristol\Crud\Exceptions\InvalidCrudInitialisationException</a></li>
 			</ul>
 
@@ -231,7 +239,7 @@
 </span><span id="95" class="l"><a href="#95"> 95: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudInitialisationException(<span class="php-quote">&quot;Data passed in incorrect format&quot;</span>);
 </span><span id="96" class="l"><a href="#96"> 96: </a>
 </span><span id="97" class="l"><a href="#97"> 97: </a>        <span class="php-keyword1">foreach</span>(<span class="php-var">$attributes</span> <span class="php-keyword1">as</span> <span class="php-var">$attribute_name</span> =&gt; <span class="php-var">$attribute_value</span>) {
-</span><span id="98" class="l"><a href="#98"> 98: </a>            <span class="php-keyword1">if</span>(!<span class="php-keyword2">in_array</span>(<span class="php-var">$attribute_name</span>, <span class="php-var">$this</span>-&gt;allowed_attirbutes))
+</span><span id="98" class="l"><a href="#98"> 98: </a>            <span class="php-keyword1">if</span>(!<span class="php-keyword2">in_array</span>(<span class="php-var">$attribute_name</span>, <span class="php-var">$this</span>-&gt;allowed_attributes))
 </span><span id="99" class="l"><a href="#99"> 99: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudInitialisationException(<span class="php-quote">&quot;Attempted to set unrecognised value: </span><span class="php-var">{$attribute_name}</span><span class="php-quote">&quot;</span>);
 </span><span id="100" class="l"><a href="#100">100: </a>
 </span><span id="101" class="l"><a href="#101">101: </a>            <span class="php-var">$this</span>-&gt;<span class="php-var">$attribute_name</span> = <span class="php-var">$attribute_value</span>;
@@ -341,7 +349,7 @@
 </span><span id="205" class="l"><a href="#205">205: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFormFields(<span class="php-var">$tab_name</span>, <span class="php-var">$fields</span>, <span class="php-var">$overwrite</span> = <span class="php-keyword1">true</span>)
 </span><span id="206" class="l"><a href="#206">206: </a>    {
 </span><span id="207" class="l"><a href="#207">207: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword2">is_array</span>(<span class="php-var">$fields</span>) )
-</span><span id="208" class="l"><a href="#208">208: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudInitialisationException(<span class="php-quote">&quot;Fields passed to addFormFields must be an array of field data arrays&quot;</span>);
+</span><span id="208" class="l"><a href="#208">208: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudFormFieldException(<span class="php-quote">&quot;Fields passed to addFormFields must be an array of field data arrays&quot;</span>);
 </span><span id="209" class="l"><a href="#209">209: </a>
 </span><span id="210" class="l"><a href="#210">210: </a>        <span class="php-keyword1">foreach</span>(<span class="php-var">$fields</span> <span class="php-keyword1">as</span> <span class="php-var">$field_name</span> =&gt; <span class="php-var">$field_data</span>) {
 </span><span id="211" class="l"><a href="#211">211: </a>            <span class="php-var">$this</span>-&gt;addFormField(<span class="php-var">$tab_name</span>, <span class="php-var">$field_name</span>, <span class="php-var">$field_data</span>, <span class="php-var">$overwrite</span>);
@@ -359,7 +367,7 @@
 </span><span id="223" class="l"><a href="#223">223: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> addFormField(<span class="php-var">$tab_name</span>, <span class="php-var">$field_name</span>, <span class="php-var">$field_data</span>, <span class="php-var">$overwrite</span> = <span class="php-keyword1">true</span>)
 </span><span id="224" class="l"><a href="#224">224: </a>    {
 </span><span id="225" class="l"><a href="#225">225: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword2">is_array</span>(<span class="php-var">$field_data</span>))
-</span><span id="226" class="l"><a href="#226">226: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudInitialisationException(<span class="php-quote">&quot;Fields passed to addFormFields must be arrays of field data&quot;</span>);
+</span><span id="226" class="l"><a href="#226">226: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudFormFieldException(<span class="php-quote">&quot;Fields passed to addFormFields must be arrays of field data&quot;</span>);
 </span><span id="227" class="l"><a href="#227">227: </a>
 </span><span id="228" class="l"><a href="#228">228: </a>        <span class="php-keyword1">if</span>(!<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) || !<span class="php-keyword2">array_key_exists</span>(<span class="php-var">$field_name</span>, <span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) || <span class="php-var">$overwrite</span>)
 </span><span id="229" class="l"><a href="#229">229: </a>            <span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>] = <span class="php-var">$field_data</span>;
@@ -374,7 +382,7 @@
 </span></span><span id="238" class="l"><a href="#238">238: </a><span class="php-comment">     */</span>
 </span><span id="239" class="l"><a href="#239">239: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> removeFormFields(<span class="php-var">$tab_name</span>, <span class="php-var">$field_names</span>)
 </span><span id="240" class="l"><a href="#240">240: </a>    {
-</span><span id="241" class="l"><a href="#241">241: </a>        <span class="php-keyword1">if</span>(<span class="php-keyword2">is_array</span>(<span class="php-var">$field_names</span>)){
+</span><span id="241" class="l"><a href="#241">241: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword2">is_array</span>(<span class="php-var">$field_names</span>)) {
 </span><span id="242" class="l"><a href="#242">242: </a>            <span class="php-keyword1">foreach</span>(<span class="php-var">$field_names</span> <span class="php-keyword1">as</span> <span class="php-var">$field_name</span>) {
 </span><span id="243" class="l"><a href="#243">243: </a>                <span class="php-var">$this</span>-&gt;removeFormField(<span class="php-var">$tab_name</span>, <span class="php-var">$field_name</span>);
 </span><span id="244" class="l"><a href="#244">244: </a>            }
@@ -391,27 +399,55 @@
 </span></span><span id="255" class="l"><a href="#255">255: </a><span class="php-comment">     */</span>
 </span><span id="256" class="l"><a href="#256">256: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> removeFormField(<span class="php-var">$tab_name</span>, <span class="php-var">$field_name</span>)
 </span><span id="257" class="l"><a href="#257">257: </a>    {
-</span><span id="258" class="l"><a href="#258">258: </a>        <span class="php-keyword1">if</span>(!stringTest(<span class="php-var">$field_name</span>))
-</span><span id="259" class="l"><a href="#259">259: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudInitialisationException;
-</span><span id="260" class="l"><a href="#260">260: </a>
-</span><span id="261" class="l"><a href="#261">261: </a>        <span class="php-keyword1">if</span>(<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) &amp;&amp; <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>])) {
-</span><span id="262" class="l"><a href="#262">262: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>]);
-</span><span id="263" class="l"><a href="#263">263: </a>            <span class="php-var">$this</span>-&gt;unsetTabIfEmpty(<span class="php-var">$tab_name</span>);
-</span><span id="264" class="l"><a href="#264">264: </a>        }
-</span><span id="265" class="l"><a href="#265">265: </a>    }
-</span><span id="266" class="l"><a href="#266">266: </a>
-</span><span id="267" class="l"><a href="#267">267: </a>    <span class="php-comment">/**
-</span></span><span id="268" class="l"><a href="#268">268: </a><span class="php-comment">     * Checks whether a given tab name has any fields present, and unsets it if empty
-</span></span><span id="269" class="l"><a href="#269">269: </a><span class="php-comment">     *
-</span></span><span id="270" class="l"><a href="#270">270: </a><span class="php-comment">     * @param  string  $tab_name  Name of tab to check
-</span></span><span id="271" class="l"><a href="#271">271: </a><span class="php-comment">     */</span>
-</span><span id="272" class="l"><a href="#272">272: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> unsetTabIfEmpty(<span class="php-var">$tab_name</span>)
-</span><span id="273" class="l"><a href="#273">273: </a>    {
-</span><span id="274" class="l"><a href="#274">274: </a>        <span class="php-keyword1">if</span>(<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) &amp;&amp; <span class="php-keyword1">empty</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]))
-</span><span id="275" class="l"><a href="#275">275: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]);
-</span><span id="276" class="l"><a href="#276">276: </a>    }
-</span><span id="277" class="l"><a href="#277">277: </a>}
-</span><span id="278" class="l"><a href="#278">278: </a></span></code></pre>
+</span><span id="258" class="l"><a href="#258">258: </a>        <span class="php-keyword1">if</span> (!stringTest(<span class="php-var">$field_name</span>)) {
+</span><span id="259" class="l"><a href="#259">259: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudFormFieldException(<span class="php-quote">'Invalid form field name'</span>);
+</span><span id="260" class="l"><a href="#260">260: </a>        }
+</span><span id="261" class="l"><a href="#261">261: </a>
+</span><span id="262" class="l"><a href="#262">262: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) &amp;&amp; <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>])) {
+</span><span id="263" class="l"><a href="#263">263: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>]);
+</span><span id="264" class="l"><a href="#264">264: </a>            <span class="php-var">$this</span>-&gt;unsetTabIfEmpty(<span class="php-var">$tab_name</span>);
+</span><span id="265" class="l"><a href="#265">265: </a>        }
+</span><span id="266" class="l"><a href="#266">266: </a>    }
+</span><span id="267" class="l"><a href="#267">267: </a>
+</span><span id="268" class="l"><a href="#268">268: </a>    <span class="php-comment">/**
+</span></span><span id="269" class="l"><a href="#269">269: </a><span class="php-comment">     * Checks whether a given tab name has any fields present, and unsets it if empty
+</span></span><span id="270" class="l"><a href="#270">270: </a><span class="php-comment">     *
+</span></span><span id="271" class="l"><a href="#271">271: </a><span class="php-comment">     * @param  string  $tab_name  Name of tab to check
+</span></span><span id="272" class="l"><a href="#272">272: </a><span class="php-comment">     */</span>
+</span><span id="273" class="l"><a href="#273">273: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> unsetTabIfEmpty(<span class="php-var">$tab_name</span>)
+</span><span id="274" class="l"><a href="#274">274: </a>    {
+</span><span id="275" class="l"><a href="#275">275: </a>        <span class="php-keyword1">if</span>(<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) &amp;&amp; <span class="php-keyword1">empty</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]))
+</span><span id="276" class="l"><a href="#276">276: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]);
+</span><span id="277" class="l"><a href="#277">277: </a>    }
+</span><span id="278" class="l"><a href="#278">278: </a>
+</span><span id="279" class="l"><a href="#279">279: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getSelectOptions(<span class="php-var">$tab_name</span>, <span class="php-var">$field_name</span>)
+</span><span id="280" class="l"><a href="#280">280: </a>    {
+</span><span id="281" class="l"><a href="#281">281: </a>        <span class="php-keyword1">if</span> (!stringTest(<span class="php-var">$field_name</span>)) {
+</span><span id="282" class="l"><a href="#282">282: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudFormFieldException(<span class="php-quote">'Invalid form field name'</span>);
+</span><span id="283" class="l"><a href="#283">283: </a>        }
+</span><span id="284" class="l"><a href="#284">284: </a>
+</span><span id="285" class="l"><a href="#285">285: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>]) &amp;&amp; <span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>])) {
+</span><span id="286" class="l"><a href="#286">286: </a>            <span class="php-var">$form_field</span> = <span class="php-var">$this</span>-&gt;form_fields[<span class="php-var">$tab_name</span>][<span class="php-var">$field_name</span>];
+</span><span id="287" class="l"><a href="#287">287: </a>        }
+</span><span id="288" class="l"><a href="#288">288: </a>
+</span><span id="289" class="l"><a href="#289">289: </a>        <span class="php-var">$manual_choices</span> = <span class="php-keyword1">isset</span>(<span class="php-var">$form_field</span>[<span class="php-quote">'choices'</span>]) ? <span class="php-var">$form_field</span>[<span class="php-quote">'choices'</span>] : [];
+</span><span id="290" class="l"><a href="#290">290: </a>
+</span><span id="291" class="l"><a href="#291">291: </a>        <span class="php-keyword1">if</span> (!stringTest(<span class="php-var">$form_field</span>[<span class="php-quote">'model'</span>])) {
+</span><span id="292" class="l"><a href="#292">292: </a>            <span class="php-keyword1">return</span> <span class="php-var">$manual_choices</span>;
+</span><span id="293" class="l"><a href="#293">293: </a>        }
+</span><span id="294" class="l"><a href="#294">294: </a>
+</span><span id="295" class="l"><a href="#295">295: </a>        <span class="php-var">$val_col</span> = <span class="php-keyword1">isset</span>(<span class="php-var">$form_field</span>[<span class="php-quote">'value_column'</span>]) &amp;&amp; stringtest(<span class="php-var">$form_field</span>[<span class="php-quote">'value_column'</span>]) ? <span class="php-var">$form_field</span>[<span class="php-quote">'value_column'</span>] : <span class="php-quote">'id'</span>;
+</span><span id="296" class="l"><a href="#296">296: </a>
+</span><span id="297" class="l"><a href="#297">297: </a>        <span class="php-keyword1">if</span> (!stringTest(<span class="php-var">$form_field</span>[<span class="php-quote">'name_column'</span>])) {
+</span><span id="298" class="l"><a href="#298">298: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> InvalidCrudFormFieldException(<span class="php-quote">'Invalid form field name'</span>);
+</span><span id="299" class="l"><a href="#299">299: </a>        }
+</span><span id="300" class="l"><a href="#300">300: </a>
+</span><span id="301" class="l"><a href="#301">301: </a>        <span class="php-var">$db_choices</span> = <span class="php-keyword2">call_user_func</span>(<span class="php-var">$form_field</span>[<span class="php-quote">'model'</span>] . <span class="php-quote">'::lists'</span>, <span class="php-var">$form_field</span>[<span class="php-quote">'name_column'</span>], <span class="php-var">$val_col</span>)-&gt;toArray();
+</span><span id="302" class="l"><a href="#302">302: </a>
+</span><span id="303" class="l"><a href="#303">303: </a>        <span class="php-keyword1">return</span> <span class="php-var">$manual_choices</span> + <span class="php-var">$db_choices</span>;
+</span><span id="304" class="l"><a href="#304">304: </a>    }
+</span><span id="305" class="l"><a href="#305">305: </a>}
+</span><span id="306" class="l"><a href="#306">306: </a></span></code></pre>
 
 	<div id="footer">
 		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
@@ -419,6 +455,6 @@
 </div>
 </div>
 <script src="resources/combined.js?cd021bc814832c24a7cec5319ea03335bfba1caf"></script>
-<script src="elementlist.js?1471a608c4648859933688d23afda93b79f327b3"></script>
+<script src="elementlist.js?fe1f16dcddaad55092dbad5a0191214928e75268"></script>
 </body>
 </html>

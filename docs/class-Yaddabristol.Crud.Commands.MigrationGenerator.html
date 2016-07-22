@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Yaddabristol\Crud\CrudServiceProvider</title>
+	<title>Class Yaddabristol\Crud\Commands\MigrationGenerator</title>
 
 	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
 
@@ -40,7 +40,7 @@
 						Classes					</a>
 
 						</li>
-				<li>
+				<li class="active">
 					<a href="namespace-Yaddabristol.Crud.Commands.html">
 						Commands					</a>
 
@@ -80,7 +80,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Yaddabristol.Crud.CrudServiceProvider.html">CrudServiceProvider</a></li>
+				<li class="active"><a href="class-Yaddabristol.Crud.Commands.MigrationGenerator.html">MigrationGenerator</a></li>
 			</ul>
 
 
@@ -107,7 +107,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-Yaddabristol.Crud.html" title="Summary of Yaddabristol\Crud"><span>Namespace</span></a>
+				<a href="namespace-Yaddabristol.Crud.Commands.html" title="Summary of Yaddabristol\Crud\Commands"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -119,22 +119,19 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class CrudServiceProvider</h1>
+	<h1>Class MigrationGenerator</h1>
 
 
-	<div class="description">
-	<p>Laravel service provider for CRUD</p>
-	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-Illuminate\Support\ServiceProvider
+Illuminate\Console\Command
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>Yaddabristol\Crud\CrudServiceProvider</span></b>			
+<b><span>Yaddabristol\Crud\Commands\MigrationGenerator</span></b>			
 			
 			
 		</dd>
@@ -150,14 +147,10 @@ Illuminate\Support\ServiceProvider
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Yaddabristol.html">Yaddabristol</a>\<a href="namespace-Yaddabristol.Crud.html">Crud</a><br>
+		<b>Namespace:</b> <a href="namespace-Yaddabristol.html">Yaddabristol</a>\<a href="namespace-Yaddabristol.Crud.html">Crud</a>\<a href="namespace-Yaddabristol.Crud.Commands.html">Commands</a><br>
 		
 
-				<b>License:</b>
-				<a href="MIT">MIT</a><br>
-				<b>Author:</b>
-				Andrew Ellender <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;">&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;</a><br>
-			<b>Located at</b> <a href="source-class-Yaddabristol.Crud.CrudServiceProvider.html#9-53" title="Go to source code">CrudServiceProvider.php</a>
+			<b>Located at</b> <a href="source-class-Yaddabristol.Crud.Commands.MigrationGenerator.html#7-42" title="Go to source code">Commands/MigrationGenerator.php</a>
 		<br>
 	</div>
 
@@ -165,93 +158,63 @@ Illuminate\Support\ServiceProvider
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="provides" id="_provides">
+	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
 			 public 
 
-			array
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_provides">#</a>
-		<code><a href="source-class-Yaddabristol.Crud.CrudServiceProvider.html#18-25" title="Go to source code">provides</a>( )</code>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Commands.MigrationGenerator.html#23-31" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
-			
+			<p>Create a new command instance.</p>
 		</div>
 
 		<div class="description detailed hidden">
+			<p>Create a new command instance.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="handle" id="_handle">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
 			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_handle">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Commands.MigrationGenerator.html#33-41" title="Go to source code">handle</a>( )</code>
+
+		<div class="description short">
+			<p>Execute the console command.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Execute the console command.</p>
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					array
+					mixed
 				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="boot" id="_boot">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_boot">#</a>
-		<code><a href="source-class-Yaddabristol.Crud.CrudServiceProvider.html#27-40" title="Go to source code">boot</a>( )</code>
-
-		<div class="description short">
-			<p>Bootstrap any application services</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Bootstrap any application services</p>
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="register" id="_register">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_register">#</a>
-		<code><a href="source-class-Yaddabristol.Crud.CrudServiceProvider.html#42-52" title="Go to source code">register</a>( )</code>
-
-		<div class="description short">
-			<p>Register any application services</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Register any application services</p>
-
-
-
 
 
 
@@ -272,6 +235,59 @@ Illuminate\Support\ServiceProvider
 
 
 
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="signature" id="$signature">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Commands.MigrationGenerator.html#9-14" title="Go to source code"><var>$signature</var></a>
+
+			<div class="description short">
+				<p>The name and signature of the console command.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The name and signature of the console command.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$signature" class="anchor">#</a>
+				<code><span class="php-quote">'make:post-migration'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="description" id="$description">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Commands.MigrationGenerator.html#16-21" title="Go to source code"><var>$description</var></a>
+
+			<div class="description short">
+				<p>The console command description.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The console command description.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$description" class="anchor">#</a>
+				<code><span class="php-quote">'Makes a base migration for new content types'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
 
 
 
