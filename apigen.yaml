@@ -1,0 +1,7 @@
+source:
+  - ./src
+
+destination: ./docs
+
+exclude:
+  - *.blade.php

@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Yaddabristol\Crud\Controllers\CrudController</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li>
+					<a href="namespace-None.html">
+						None					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-Yaddabristol.html">
+						Yaddabristol<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-Yaddabristol.Crud.html">
+						Crud<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Classes.html">
+						Classes					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-Yaddabristol.Crud.Controllers.html">
+						Controllers					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Exceptions.html">
+						Exceptions					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Helpers.html">
+						Helpers					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Interfaces.html">
+						Interfaces					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Traits.html">
+						Traits					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Yaddabristol.Crud.Controllers.CrudController.html">CrudController</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Yaddabristol.Crud.Controllers.html" title="Summary of Yaddabristol\Crud\Controllers"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CrudController</h1>
+
+
+	<div class="description">
+	<p>Http controller for CRUD</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+Illuminate\Routing\Controller
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Yaddabristol\Crud\Controllers\CrudController</span></b>			
+			
+			 uses 
+					Illuminate\Foundation\Auth\Access\AuthorizesRequests (not available)
+
+			
+					Illuminate\Foundation\Bus\DispatchesJobs (not available)
+
+			
+					Illuminate\Foundation\Validation\ValidatesRequests (not available)
+
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br>
+		
+		<b>Namespace:</b> <a href="namespace-Yaddabristol.html">Yaddabristol</a>\<a href="namespace-Yaddabristol.Crud.html">Crud</a>\<a href="namespace-Yaddabristol.Crud.Controllers.html">Controllers</a><br>
+		
+
+				<b>License:</b>
+				<a href="MIT">MIT</a><br>
+				<b>Author:</b>
+				Jake Gully <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x6a;&#x61;&#x6b;&#x65;&#x40;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#x63;&#x6f;&#x2e;&#x75;&#107;">&#x6a;&#x61;&#x6b;&#x65;&#x40;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#x63;&#x6f;&#x2e;&#x75;&#107;</a><br>
+				<b>Author:</b>
+				Andrew Ellender <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;">&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;</a><br>
+			<b>Located at</b> <a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#16-466" title="Go to source code">Controllers/CrudController.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#170-179" title="Go to source code">__construct</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addRouteToBodyClasses" id="_addRouteToBodyClasses">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addRouteToBodyClasses">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#181-201" title="Go to source code">addRouteToBodyClasses</a>( )</code>
+
+		<div class="description short">
+			<p>Adds required parts of the current route's name to $this->body_classes.
+Or does nothing if this isn't a names route.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds required parts of the current route's name to $this->body_classes.
+Or does nothing if this isn't a names route.</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCrudAttributes" id="_getCrudAttributes">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCrudAttributes">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#203-221" title="Go to source code">getCrudAttributes</a>( )</code>
+
+		<div class="description short">
+			<p>Returns an array of crud-related attributes on this object</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns an array of crud-related attributes on this object</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>Name=>value pairs
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="index" id="_index">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_index">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#223-264" title="Go to source code">index</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
+
+		<div class="description short">
+			<p>Display a listing of the resource</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Display a listing of the resource</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="create" id="_create">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_create">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#266-287" title="Go to source code">create</a>( )</code>
+
+		<div class="description short">
+			<p>Show the form for creating a new resource</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Show the form for creating a new resource</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeCreate" id="_beforeCreate">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeCreate">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#289-295" title="Go to source code">beforeCreate</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before the item create form is displayed</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before the item create form is displayed</p>
+
+
+
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="store" id="_store">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_store">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#297-322" title="Go to source code">store</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
+
+		<div class="description short">
+			<p>Save the details from the create form to the database</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Save the details from the create form to the database</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeStore" id="_beforeStore">
+
+		<td class="attributes"><code>
+			 protected 
+
+			Void
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeStore">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#324-330" title="Go to source code">beforeStore</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before data is validated and stored</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before data is validated and stored</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Void
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="afterStore" id="_afterStore">
+
+		<td class="attributes"><code>
+			 protected 
+
+			Void
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_afterStore">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#332-338" title="Go to source code">afterStore</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for after data has been stored</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for after data has been stored</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Void
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="show" id="_show">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_show">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#340-364" title="Go to source code">show</a>( <span>Illuminate\Http\Request <var>$request</var></span>, <span> <var>$id</var></span> )</code>
+
+		<div class="description short">
+			<p>Display the specified resource</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Display the specified resource</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd>$id</dd>
+					<dt><var>$id</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeShow" id="_beforeShow">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeShow">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#366-372" title="Go to source code">beforeShow</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before an item page is displayed</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before an item page is displayed</p>
+
+
+
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="edit" id="_edit">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_edit">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#374-390" title="Go to source code">edit</a>( <span> <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeEdit" id="_beforeEdit">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeEdit">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#392-398" title="Go to source code">beforeEdit</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before the edit page is displayed</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before the edit page is displayed</p>
+
+
+
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#400-425" title="Go to source code">update</a>( <span>Illuminate\Http\Request <var>$request</var></span>, <span>integer <var>$id</var></span> )</code>
+
+		<div class="description short">
+			<p>Update the specified resource in storage</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update the specified resource in storage</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd></dd>
+					<dt><var>$id</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeUpdate" id="_beforeUpdate">
+
+		<td class="attributes"><code>
+			 protected 
+
+			None
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeUpdate">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#427-433" title="Go to source code">beforeUpdate</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before data is validated and saved</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before data is validated and saved</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					None
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="afterUpdate" id="_afterUpdate">
+
+		<td class="attributes"><code>
+			 protected 
+
+			None
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_afterUpdate">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#435-441" title="Go to source code">afterUpdate</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for after data has been saved</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for after data has been saved</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					None
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="destroy" id="_destroy">
+
+		<td class="attributes"><code>
+			 public 
+
+			Illuminate\Http\Response
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_destroy">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#443-457" title="Go to source code">destroy</a>( <span>integer <var>$id</var></span> )</code>
+
+		<div class="description short">
+			<p>Remove the specified resource from storage</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Remove the specified resource from storage</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\Response
+				</div>
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="beforeDestroy" id="_beforeDestroy">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_beforeDestroy">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#459-465" title="Go to source code">beforeDestroy</a>( )</code>
+
+		<div class="description short">
+			<p>Hook for before item is destroyed</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Hook for before item is destroyed</p>
+
+
+
+
+
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="model" id="$model">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#27-33" title="Go to source code"><var>$model</var></a>
+
+			<div class="description short">
+				<p>The model handled by this controller.
+E.g. Model::class or 'App\Models\MyModel'</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The model handled by this controller.
+E.g. Model::class or 'App\Models\MyModel'</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$model" class="anchor">#</a>
+				<code><span class="php-keyword1">null</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="views_dir" id="$views_dir">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#35-40" title="Go to source code"><var>$views_dir</var></a>
+
+			<div class="description short">
+				<p>Directory that views are stored in. E.g. 'admin.model'</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Directory that views are stored in. E.g. 'admin.model'</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$views_dir" class="anchor">#</a>
+				<code><span class="php-quote">''</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="name_singular" id="$name_singular">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#42-47" title="Go to source code"><var>$name_singular</var></a>
+
+			<div class="description short">
+				<p>The name of the model handled by this controller.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The name of the model handled by this controller.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$name_singular" class="anchor">#</a>
+				<code><span class="php-quote">'Base Model'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="name_plural" id="$name_plural">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#49-54" title="Go to source code"><var>$name_plural</var></a>
+
+			<div class="description short">
+				<p>The plural name of the model handled by this controller.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The plural name of the model handled by this controller.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$name_plural" class="anchor">#</a>
+				<code><span class="php-quote">'Base Models'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="route" id="$route">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#56-61" title="Go to source code"><var>$route</var></a>
+
+			<div class="description short">
+				<p>The base route for this controller.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The base route for this controller.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$route" class="anchor">#</a>
+				<code><span class="php-quote">'admin.base'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="route_class_prefix" id="$route_class_prefix">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#63-68" title="Go to source code"><var>$route_class_prefix</var></a>
+
+			<div class="description short">
+				<p>String to prefix all classes discovered by the RouteNameHelper with</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>String to prefix all classes discovered by the RouteNameHelper with</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$route_class_prefix" class="anchor">#</a>
+				<code><span class="php-quote">'route-'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="rules" id="$rules">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#70-76" title="Go to source code"><var>$rules</var></a>
+
+			<div class="description short">
+				<p>Basic validation rules. You may want to alter this in custom
+doUpdate or doStore methods if they aren't the same.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Basic validation rules. You may want to alter this in custom
+doUpdate or doStore methods if they aren't the same.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$rules" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="messages" id="$messages">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#78-83" title="Go to source code"><var>$messages</var></a>
+
+			<div class="description short">
+				<p>Custom validation error messages</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Custom validation error messages</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$messages" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="paginate" id="$paginate">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#85-90" title="Go to source code"><var>$paginate</var></a>
+
+			<div class="description short">
+				<p>Set this to true to enable pagination on index pages.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set this to true to enable pagination on index pages.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$paginate" class="anchor">#</a>
+				<code><span class="php-keyword1">false</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="settings" id="$settings">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#92-101" title="Go to source code"><var>$settings</var></a>
+
+			<div class="description short">
+				<p>Settings for ordering, searching and pagination</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Settings for ordering, searching and pagination</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$settings" class="anchor">#</a>
+				<code>[
+    <span class="php-quote">'perpage'</span> =&gt; <span class="php-num">20</span>,
+    <span class="php-quote">'orderby'</span> =&gt; <span class="php-quote">'id'</span>,
+    <span class="php-quote">'order'</span> =&gt; <span class="php-quote">'ASC'</span>
+]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="additional_query_scope_filters" id="$additional_query_scope_filters">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#103-108" title="Go to source code"><var>$additional_query_scope_filters</var></a>
+
+			<div class="description short">
+				<p>Setting for adding additional filtering to the index query.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Setting for adding additional filtering to the index query.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$additional_query_scope_filters" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="body_classes" id="$body_classes">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#110-115" title="Go to source code"><var>$body_classes</var></a>
+
+			<div class="description short">
+				<p>Classes to be added to the body tag</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Classes to be added to the body tag</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$body_classes" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="table_columns" id="$table_columns">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#117-126" title="Go to source code"><var>$table_columns</var></a>
+
+			<div class="description short">
+				<p>Index page table column headings and associated attributes</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Index page table column headings and associated attributes</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$table_columns" class="anchor">#</a>
+				<code>[
+    <span class="php-quote">'ID'</span> =&gt; <span class="php-quote">'id'</span>,
+    <span class="php-quote">'Name'</span> =&gt; <span class="php-quote">'name'</span>,
+    <span class="php-quote">'Slug'</span> =&gt; <span class="php-quote">'slug'</span>
+]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="has_files" id="$has_files">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#128-133" title="Go to source code"><var>$has_files</var></a>
+
+			<div class="description short">
+				<p>Set to true to enable file uploading.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set to true to enable file uploading.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$has_files" class="anchor">#</a>
+				<code><span class="php-keyword1">false</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="form_fields" id="$form_fields">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#135-144" title="Go to source code"><var>$form_fields</var></a>
+
+			<div class="description short">
+				<p>Fields to use in autogenerated form. The options specified here only
+affect the HTML that is generated by autoform.blade.php. They do not
+otherwise affect the application. Because of this you can easily
+create your own field types by just creating a blade file.
+e.g. views/fields/YOURFIELDNAME.blade.php</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Fields to use in autogenerated form. The options specified here only
+affect the HTML that is generated by autoform.blade.php. They do not
+otherwise affect the application. Because of this you can easily
+create your own field types by just creating a blade file.
+e.g. views/fields/YOURFIELDNAME.blade.php</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$form_fields" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="route_name_separator" id="$route_name_separator">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#146-152" title="Go to source code"><var>$route_name_separator</var></a>
+
+			<div class="description short">
+				<p>Separator between entities in the route name. Laravel defaults to
+'.' and should mostly be left as such, but can be overridden.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Separator between entities in the route name. Laravel defaults to
+'.' and should mostly be left as such, but can be overridden.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$route_name_separator" class="anchor">#</a>
+				<code><span class="php-quote">'.'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="data" id="$data">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#154-160" title="Go to source code"><var>$data</var></a>
+
+			<div class="description short">
+				<p>Additional data to append to or override on the request. I.e. for
+adding functionality in beforeStore(), afterStore() etc.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Additional data to append to or override on the request. I.e. for
+adding functionality in beforeStore(), afterStore() etc.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$data" class="anchor">#</a>
+				<code>[]</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="item" id="$item">
+		<td class="attributes"><code>
+			protected  
+			Illuminate\Database\Eloquent\Model
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Controllers.CrudController.html#162-168" title="Go to source code"><var>$item</var></a>
+
+			<div class="description short">
+				<p>The item currently being created/updated. For use in beforeStore,
+afterStore, beforeUpdate, afterUpdate.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The item currently being created/updated. For use in beforeStore,
+afterStore, beforeUpdate, afterUpdate.</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$item" class="anchor">#</a>
+				<code><span class="php-keyword1">null</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

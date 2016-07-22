@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Yaddabristol\Crud\Helpers\RouteNameHelper</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li>
+					<a href="namespace-None.html">
+						None					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-Yaddabristol.html">
+						Yaddabristol<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-Yaddabristol.Crud.html">
+						Crud<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Classes.html">
+						Classes					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Controllers.html">
+						Controllers					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Exceptions.html">
+						Exceptions					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-Yaddabristol.Crud.Helpers.html">
+						Helpers					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Interfaces.html">
+						Interfaces					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Yaddabristol.Crud.Traits.html">
+						Traits					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Yaddabristol.Crud.Helpers.RouteNameHelper.html">RouteNameHelper</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Yaddabristol.Crud.Helpers.html" title="Summary of Yaddabristol\Crud\Helpers"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class RouteNameHelper</h1>
+
+
+	<div class="description">
+	<p>Split a route into helpful chunks</p>
+
+<p>Converts route names into an array of its constituent parts, separated by a
+given separator. If the first element is empty, return an array with just
+'home' in, as it should only happen when calling '/' route path.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Yaddabristol.html">Yaddabristol</a>\<a href="namespace-Yaddabristol.Crud.html">Crud</a>\<a href="namespace-Yaddabristol.Crud.Helpers.html">Helpers</a><br>
+		
+
+				<b>License:</b>
+				<a href="MIT">MIT</a><br>
+				<b>Author:</b>
+				Andrew Ellender <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;">&#97;&#110;&#100;&#114;&#101;w&#64;&#x79;&#x61;&#x64;&#x64;&#x61;&#x2e;&#99;&#111;&#46;&#117;&#107;</a><br>
+			<b>Located at</b> <a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#3-77" title="Go to source code">Helpers/RouteNameHelper.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#19-24" title="Go to source code">__construct</a>( <span> <var>$route_name</var></span>, <span> <var>$separator</var></span>, <span> <var>$route_prefix</var> = <span class="php-quote">'route-'</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPartsArray" id="_getPartsArray">
+
+		<td class="attributes"><code>
+			 protected 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPartsArray">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#26-34" title="Go to source code">getPartsArray</a>( )</code>
+
+		<div class="description short">
+			<p>Readable function to Split a string into an array, with a known separator</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Readable function to Split a string into an array, with a known separator</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>sections of original string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAllParts" id="_getAllParts">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAllParts">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#36-61" title="Go to source code">getAllParts</a>( )</code>
+
+		<div class="description short">
+			<p>Get all parts of the route</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get all parts of the route</p>
+
+<p>Returns an array with all single parts of the stored route_name, along
+with array_shifted subsections, e.g. admin-things-create, things-create</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>sections and partials from original string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addRoutePrefixToClasses" id="_addRoutePrefixToClasses">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addRoutePrefixToClasses">#</a>
+		<code><a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#63-76" title="Go to source code">addRoutePrefixToClasses</a>( <span>array <var>$classes</var></span> )</code>
+
+		<div class="description short">
+			<p>Adds a given route prefix to all classes passed in</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds a given route prefix to all classes passed in</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$classes</var></dt>
+					<dd>array of class strings</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>$classes  modified array
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="route_name" id="$route_name">
+		<td class="attributes"><code>
+			protected  
+			
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#15" title="Go to source code"><var>$route_name</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$route_name" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="separator" id="$separator">
+		<td class="attributes"><code>
+			protected  
+			
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#16" title="Go to source code"><var>$separator</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$separator" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="route_prefix" id="$route_prefix">
+		<td class="attributes"><code>
+			protected  
+			
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Yaddabristol.Crud.Helpers.RouteNameHelper.html#17" title="Go to source code"><var>$route_prefix</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$route_prefix" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
