@@ -288,11 +288,17 @@ class CrudManager {
 
         $manual_choices = isset($form_field['choices']) ? $form_field['choices'] : [];
 
-        if (!stringTest($form_field['model'])) {
+        if (!isset($form_field['model'])
+            || !stringTest($form_field['model'])) {
             return $manual_choices;
         }
 
-        $val_col = isset($form_field['value_column']) && stringtest($form_field['value_column']) ? $form_field['value_column'] : 'id';
+        $val_col = 'id';
+
+        if (isset($form_field['value_column'])
+            && stringtest($form_field['value_column'])) {
+            $val_col = $form_field['value_column'];
+        }
 
         if (!stringTest($form_field['name_column'])) {
             throw new InvalidCrudFormFieldException('Invalid form field name');
