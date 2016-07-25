@@ -116,6 +116,20 @@ class CrudManager {
     }
 
     /**
+     * Setter function for properties. 
+     * 
+     * @param string    $attribute_name     attribute name
+     * @param mixed     $attribute_value    attribute value to set
+     */
+    public function setProperty($attribute_name, $attribute_value)
+    {
+        if(!in_array($attribute_name, $this->allowed_attributes))
+            throw new InvalidCrudInitialisationException("Attempted to set unrecognised value: {$attribute_name}");
+
+        $this->$attribute_name = $attribute_value;
+    }
+
+    /**
      * Returns all the body classes as a space separated string
      *
      * @return string
