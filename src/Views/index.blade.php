@@ -27,7 +27,7 @@
           <tr>
             @foreach (crud('table_columns') as $name => $value)
               @if(is_array($value))
-                <td>{!! $item->$value !!}</td>
+                <td>{!! $item->$value[0] !!}</td>
               @else
                 <td>{{ $item->$value }}</td>
               @endif
