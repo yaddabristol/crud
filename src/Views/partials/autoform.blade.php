@@ -16,7 +16,7 @@
         <?php $data = [
           'name'  => $name,
           'field' => $field,
-          'value' => $model->$name
+          'value' => ($model ? $model->$name : null)
         ]; ?>
 
         @if (view()->exists('crud::fields.' . $field['type']))
