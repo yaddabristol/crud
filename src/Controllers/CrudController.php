@@ -116,7 +116,9 @@ abstract class CrudController extends BaseController
     protected $body_classes = [];
 
     /**
-     * Index page table column headings and associated attributes
+     * Index page table column headings and associated attributes 
+     * To display a column without escaping it (eg, an model-generated
+     * image tag), wrap the value in an array.
      *
      * @var array
      */
@@ -255,6 +257,8 @@ abstract class CrudController extends BaseController
     {
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
+
+        if(!empty($this->display_raw)) view()->share('display_raw', $this->display_raw);
 
         if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) &&
             $this->request->has('search')) {

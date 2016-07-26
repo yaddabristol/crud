@@ -26,7 +26,11 @@
         @foreach ($items as $item)
           <tr>
             @foreach (crud('table_columns') as $name => $value)
-              <td>{{ $item->$value }}</td>
+              @if(is_array($value))
+                <td>{!! $item->$value !!}</td>
+              @else
+                <td>{{ $item->$value }}</td>
+              @endif
             @endforeach
             <td>
               {!! Form::open([
