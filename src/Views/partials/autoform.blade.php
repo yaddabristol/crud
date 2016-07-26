@@ -19,10 +19,7 @@
           'value' => $model->$name
         ]; ?>
 
-        @if(view()->exists('fields.' . $field['type']))
-          {{-- Allow using custom field types --}}
-          @include('fields.' . $field['type'], $data)
-        @elseif (view()->exists('crud::fields.' . $field['type']))
+        @if (view()->exists('crud::fields.' . $field['type']))
           {{-- Try default field types --}}
           @include('crud::fields.' . $field['type'], $data)
         @else
