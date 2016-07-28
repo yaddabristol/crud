@@ -356,12 +356,30 @@ abstract class CrudController extends BaseController
 
     /**
      * Hook for before data is validated and stored
+     * for both store and update functions
+     *
+     * @api
+     * @return void
+     */
+    protected function beforeSave() {}
+   
+    /**
+     * Hook for before data is validated and stored
      *
      * @api
      * @return Void
      */
     protected function beforeStore() {}
 
+    /**
+     * Hook for after data has been stored
+     * for both store and update functions
+     *
+     * @api
+     * @return void
+     */
+    protected function afterSave() {}
+   
     /**
      * Hook for after data has been stored
      *
