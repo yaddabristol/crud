@@ -258,6 +258,8 @@ abstract class CrudController extends BaseController
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
 
+        $this->beforeIndex();
+
         if(!empty($this->display_raw)) view()->share('display_raw', $this->display_raw);
 
         if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) &&
@@ -291,6 +293,15 @@ abstract class CrudController extends BaseController
             }
         }
     }
+
+    /**
+     * Hook for adding functionality before the index
+     * page is displayed
+     *
+     * @api
+     * @return void
+     */
+    protected function beforeIndex() {}
 
     /**
      * Show the form for creating a new resource
