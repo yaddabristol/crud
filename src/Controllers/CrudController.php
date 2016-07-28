@@ -147,6 +147,15 @@ abstract class CrudController extends BaseController
     protected $form_fields = [];
 
     /**
+     * Array of Relationship names to automatically load on the index
+     * view for this controller. Will apply a 'with('relationship')'
+     * query modifier to the index query.
+     * 
+     * @var array
+     */
+    protected $preload_relationships = [];
+
+    /**
      * Separator between entities in the route name. Laravel defaults to
      * '.' and should mostly be left as such, but can be overridden.
      *
@@ -255,10 +264,16 @@ abstract class CrudController extends BaseController
      */
     public function index(Request $request)
     {
+        $this->beforeIndex();
+
         $items = call_user_func($this->model.'::query');
         $items->orderBy($this->settings['orderby'], $this->settings['order']);
 
-        $this->beforeIndex();
+        if(!empty($this->preload_relationships)) {
+            foreach($this->preload_relationships as $relationship) {
+                $items->with($relationship);
+            }
+        }
 
         if(!empty($this->display_raw)) view()->share('display_raw', $this->display_raw);
 
