@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h1>Create a new {{ crud('name_singular') }}</h1>
+        <h1>
+            Create a new {{ crud('name_singular') }}
+            <a href="{{ route(crud('route') . '.index') }}" class="btn btn-primary pull-xs-right">Back</a>
+        </h1>
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">
