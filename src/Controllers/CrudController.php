@@ -334,12 +334,14 @@ abstract class CrudController extends BaseController
      */
     public function store(Request $request)
     {
+        $this->beforeSave();
         $this->beforeStore();
 
         $this->validate($request, $this->rules, $this->messages);
         $data = array_merge(request()->all(), $this->data);
         $this->item = call_user_func($this->model . '::create', $data);
 
+        $this->afterSave();
         $this->afterStore();
 
         if ($request->ajax()) {
@@ -461,10 +463,15 @@ abstract class CrudController extends BaseController
     public function update(Request $request, $id)
     {
         $this->item = call_user_func($this->model . '::findOrFail', $id);
+
+        $this->beforeSave();
         $this->beforeUpdate();
+
         $this->validate($request, $this->rules, $this->messages);
         $data = array_merge(request()->all(), $this->data);
         $this->item->update($data);
+
+        $this->afterSave();
         $this->afterUpdate();
 
         if ($request->ajax()) {
