@@ -15,12 +15,7 @@
 
     <table class="table table-hover">
       <thead>
-        @foreach (crud('table_columns') as $name => $value)
-          <th>{{ (is_numeric($name) ? $value : $name ) }}</th>
-        @endforeach
-        <th>
-          Actions
-        </th>
+        @include('crud::partials.index_table_head')
       </thead>
       <tbody id="{{ strtolower(crud('name_plural')) }}">
         @foreach ($items as $item)
