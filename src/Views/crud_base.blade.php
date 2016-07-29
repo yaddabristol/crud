@@ -8,6 +8,7 @@
     </head>
     <body>
         @yield('content')
+        @yield('footer_variables')
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/medium-editor/5.21.0/js/medium-editor.min.js"></script>
         <script type="text/javascript" src="{{ asset('crud/crud.js') }}"></script>

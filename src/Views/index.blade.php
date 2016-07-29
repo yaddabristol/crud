@@ -13,7 +13,7 @@
 
     @include('crud::partials.messages')
 
-    <table class="table table-hover">
+    <table class="table table-hover"> 
       <thead>
         @include('crud::partials.index_table_head')
       </thead>
@@ -44,3 +44,7 @@
       @include('crud::partials.index_foot')
   </div>
 @endsection
+
+@section('footer_variables')
+  @include('crud::partials.footer_script_enqueue')
+@stop

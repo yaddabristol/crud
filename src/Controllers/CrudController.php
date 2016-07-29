@@ -147,6 +147,13 @@ abstract class CrudController extends BaseController
     protected $form_fields = [];
 
     /**
+     * An array of variables to add as javacript variables. Array key becomes
+     * the variable name, and the array value becomes the variable value
+     * @var array
+     */
+    protected $variables = [];
+
+    /**
      * Array of Relationship names to automatically load on the index
      * view for this controller. Will apply a 'with('relationship')'
      * query modifier to the index query.
@@ -253,6 +260,7 @@ abstract class CrudController extends BaseController
             'table_columns' => $this->table_columns,
             'paginate'      => $this->paginate,
             'form_fields'   => $this->form_fields,
+            'variables'     => $this->variables
         ];
     }
 

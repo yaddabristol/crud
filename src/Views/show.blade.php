@@ -7,3 +7,7 @@
         Showing {{ crud('name_singular') }} #{{ $item->id }}
     </div>
 @endsection
+
+@section('footer_variables')
+  @include('crud::partials.footer_script_enqueue')
+@stop

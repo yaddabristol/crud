@@ -65,6 +65,14 @@ class CrudManager {
     protected $form_fields = [];
 
     /**
+     * Array used to add javascript variables to before any other scripts
+     * are loaded
+     * 
+     * @var array
+     */
+    protected $variables = [];
+
+    /**
      * @todo What's this for?
      * @var  array
      */
@@ -76,7 +84,8 @@ class CrudManager {
         'body_classes',
         'table_columns',
         'paginate',
-        'form_fields'
+        'form_fields',
+        'variables'
     ];
 
     /**
@@ -290,6 +299,40 @@ class CrudManager {
             unset($this->form_fields[$tab_name]);
     }
 
+    /**
+     * Unsets an array of values on the variables array
+     * 
+     * @param array     $variables      array keys to unset
+     */
+    public function unsetVariables($variables) {
+        foreach($variables as $variable) {
+            unset($this->variables[$variable]);
+        }
+    }
+
+    /**
+     * Sets an array of values on the variables array,
+     * overwriting existing values if needed
+     * 
+     * @param array     $variables      Values to set
+     */
+    public function setVariables($variables)
+    {
+        foreach($variables as $name => $value) {
+            $this->variables[$name] = $value;
+        }
+    }
+
+    /**
+     * Gets an array of key => value pairs defined by properties set up 
+     * in the form field. Can be used to easily provide static answers, or 
+     * to call all items of a given model, by id (or an overriden value_colum)
+     * with a value of given value_name
+     * 
+     * @param  string       $tab_name           tab in which the field sits
+     * @param  string       $field_name         field name
+     * @return array                            array of options
+     */
     public function getSelectOptions($tab_name, $field_name)
     {
         if (!stringTest($field_name)) {
