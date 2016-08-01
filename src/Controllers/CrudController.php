@@ -340,6 +340,7 @@ abstract class CrudController extends BaseController
             'has_files' => $this->has_files,
         ];
 
+        $this->beforeCreateAndEdit();
         $this->beforeCreate();
 
         $data = array_merge($data, $this->data);
@@ -350,6 +351,14 @@ abstract class CrudController extends BaseController
             return view('crud::create', $data);
         }
     }
+
+    /**
+     * Hook for before the item create or Edit form is displayed
+     *
+     * @api
+     * @return void
+     */
+    protected function beforeCreateAndEdit() {}
 
     /**
      * Hook for before the item create form is displayed
@@ -467,6 +476,7 @@ abstract class CrudController extends BaseController
             'has_files' => $this->has_files
         ];
 
+        $this->beforeCreateAndEdit();
         $this->beforeEdit();
 
         $data = array_merge($data, $this->data);
