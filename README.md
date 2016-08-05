@@ -50,7 +50,44 @@ Extendable CRUD controller for quick development.
 * Maybe define some fields for automatic form creation (see below)
 * Make a website
 
-## Configuration
+## Usage
+
+CRUD is designed to let you use the full power of Laravel without having to write tedious controllers and form and list views. The basic steps for creating a new section are as follows:
+
+1. Create a database table
+
+    ```
+    php artisan make:migration create_things_table --create=things
+    ```
+
+2. Create a Model
+
+    ```
+    php artisan make:model Thing
+    ```
+
+3. Create a Controller
+
+    ```
+    php artisan make:controller ThingController
+    ```
+
+4. Update your controller so that it extends the CRUD controller. E.g.
+
+    ```
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+    use Yaddabristol\Crud\Controllers\CrudController;
+
+    class ThingController extends CrudController {
+        // ...
+    }
+    ```
+
+## Controller Configuration
 
 You'll want to override some of these things in your controller. See the source code of `Controllers\CrudController` for more info.
 
@@ -112,12 +149,11 @@ Then populate the `form_fields` attribute of your controller with an array of fi
 * **value_column** - Select fields only. The column name on `model` to use as a value. Defaults to `'id'`.
 * **multiple** - Select fields only. Allow selecting multiple values.
 
-
-## Usage Notes
-
-### Images
+## Images
 
 The `image` field type assumes the use of [Laravel Stapler](https://github.com/CodeSleeve/laravel-stapler) for attaching images to models. If you don't want to use that, you can easily override the image field type or create your own. Just copy `crud/src/Views/fields/image.blade.php` to `{YOUR_APP}/resources/views/fields/image.blade.php`.
+
+## Usage Notes
 
 ### Default Values
 
@@ -127,16 +163,15 @@ To add default values in a create form, set `protected $attributes = [];` on you
 
 ### Models
 
-Remember to set up the Fillable fields of the Model, otherwise it will fail with a mass assignment
-exception on `_token`.
+Remember to set up the `fillable` attribute on your Model, otherwise it will fail with a mass assignment exception on `_token`.
 
 ### File uploads
 
-If you add a file upload to a form, you'll need to set `protected $has_files = true;` on your controller.
+If you add a file/image field to a form, you'll need to set `protected $has_files = true;` on your controller.
 
 ### Development
 
-Need to add line to base-install under autoload - PSR4 when developing from the packages folder: "Yaddabristol\\Crud\\": "packages/yadda/crud/src/".
+Need to add line to base-install under autoload - PSR4 when developing from the packages folder: ``"Yaddabristol\\Crud\\": "packages/yadda/crud/src/"``.
 
 You'll need to require the laravelcollective/html package from your base install as you'll
 be developing in the packages folder and it won't automatically register it's requirements
