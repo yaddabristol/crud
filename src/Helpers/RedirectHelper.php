@@ -40,7 +40,14 @@ class RedirectHelper
      */
     protected function getMethod()
     {
-        list($class, $method) = explode('@', $this->controller->getRequest()->route()->getActionName());
+        $route = $this->controller->getRequest()->route();
+
+        if (is_null($route)) {
+            $method = 'non-crud-route';
+        } else {
+            list($class, $method) = explode('@', $route->getActionName());
+        }
+
         return $method;
     }
 }
