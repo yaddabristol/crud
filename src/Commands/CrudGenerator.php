@@ -78,6 +78,11 @@ class CrudGenerator extends Command
         }
     }
 
+    /**
+     * Create the new controller
+     *
+     * @return void
+     */
     protected function makeController()
     {
         $code = $this->compileController();
@@ -87,6 +92,13 @@ class CrudGenerator extends Command
 
         $this->info('Controller created successfully.');
         $this->composer->dumpAutoloads();
+    }
+
+    protected function makeMigration()
+    {
+        $this->call('make:migration', [
+            'name' => strtolower('create_' . $this->name_plural . '_table')
+        ]);
     }
 
     /**
