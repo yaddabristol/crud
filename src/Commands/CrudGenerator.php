@@ -73,6 +73,7 @@ class CrudGenerator extends Command
 
         if ($proceed) {
             $this->makeController();
+            $this->makeMigration();
         } else {
             $this->info('Ok then. Start again.');
         }
@@ -97,8 +98,11 @@ class CrudGenerator extends Command
     protected function makeMigration()
     {
         $this->call('make:migration', [
-            'name' => strtolower('create_' . $this->name_plural . '_table')
+            'name' => strtolower('create_' . $this->name_plural . '_table'),
+            '--create' => strtolower($this->name_plural)
         ]);
+
+        $this->info('Migration created successfully');
     }
 
     /**
