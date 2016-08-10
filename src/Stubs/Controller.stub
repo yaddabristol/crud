@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Yaddabristol\Crud\Controllers\CrudController;
+use App\Http\Requests;
+use App\{{model_name}};
+
+class {{controller_name}} extends CrudController
+{
+    protected $model         = {{model_name}}::class;
+    protected $views_dir     = '{{views_dir}}';
+    protected $name_singular = '{{name_singular}}';
+    protected $name_plural   = '{{name_plural}}';
+    protected $route         = '{{route}}';
+    protected $has_files = {{files}};
+    protected $form_fields = [
+        'main' => []
+    ];
+    protected $rules = [];
+}

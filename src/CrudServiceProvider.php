@@ -16,6 +16,15 @@ class CrudServiceProvider extends ServiceProvider
 {
 
     /**
+     * Available artisan commands
+     *
+     * @var [type]
+     */
+    protected $commands = [
+        'Yaddabristol\Crud\Commands\CrudGenerator'
+    ];
+
+    /**
      * @todo   Document this!
      * @return array
      */
@@ -49,5 +58,7 @@ class CrudServiceProvider extends ServiceProvider
         $this->app->singleton('crud.manager', function() {
             return new CrudManager();
         });
+
+        $this->commands($this->commands);
     }
 }
