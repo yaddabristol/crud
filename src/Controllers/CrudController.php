@@ -116,7 +116,7 @@ abstract class CrudController extends BaseController
     protected $body_classes = [];
 
     /**
-     * Index page table column headings and associated attributes 
+     * Index page table column headings and associated attributes
      * To display a column without escaping it (eg, an model-generated
      * image tag), wrap the value in an array.
      *
@@ -157,7 +157,7 @@ abstract class CrudController extends BaseController
      * Array of Relationship names to automatically load on the index
      * view for this controller. Will apply a 'with('relationship')'
      * query modifier to the index query.
-     * 
+     *
      * @var array
      */
     protected $preload_relationships = [];
@@ -407,7 +407,7 @@ abstract class CrudController extends BaseController
      * @return void
      */
     protected function beforeSave() {}
-   
+
     /**
      * Hook for before data is validated and stored
      *
@@ -424,7 +424,7 @@ abstract class CrudController extends BaseController
      * @return void
      */
     protected function afterSave() {}
-   
+
     /**
      * Hook for after data has been stored
      *
@@ -442,14 +442,17 @@ abstract class CrudController extends BaseController
      */
     public function show(Request $request, $id)
     {
-        $item = call_user_func($this->model . '::findOrFail', $id);
+        $this->item = call_user_func($this->model . '::findOrFail', $id);
 
         $this->beforeShow();
 
-        $data = compact('item');
+        $data = [
+            'item' => $this->item,
+            'data' => $this->data
+        ];
 
         if ($request->ajax()) {
-            return json_encode($item);
+            return json_encode($this->item);
         } else {
             if (view()->exists($this->views_dir . '.show')) {
                 return view($this->views_dir . '.show', $data);
