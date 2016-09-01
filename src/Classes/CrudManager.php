@@ -67,7 +67,7 @@ class CrudManager {
     /**
      * Array used to add javascript variables to before any other scripts
      * are loaded
-     * 
+     *
      * @var array
      */
     protected $variables = [];
@@ -88,6 +88,8 @@ class CrudManager {
         'variables'
     ];
 
+    protected $controller;
+
     /**
      * Applies a set of data to this object
      *
@@ -98,10 +100,12 @@ class CrudManager {
     {
         // if $attributes is an instance of crud controller pull properties,
         // otherwise ensure attributes is an array
-        if(is_object($attributes) && $attributes instanceof CrudController)
+        if(is_object($attributes) && $attributes instanceof CrudController) {
+            $this->controller = $attributes;
             $attributes = $attributes->getCrudAttributes();
-        elseif(!is_array($attributes))
+        } elseif(!is_array($attributes)) {
             throw new InvalidCrudInitialisationException("Data passed in incorrect format");
+        }
 
         foreach($attributes as $attribute_name => $attribute_value) {
             if(!in_array($attribute_name, $this->allowed_attributes))
@@ -125,8 +129,8 @@ class CrudManager {
     }
 
     /**
-     * Setter function for properties. 
-     * 
+     * Setter function for properties.
+     *
      * @param string    $attribute_name     attribute name
      * @param mixed     $attribute_value    attribute value to set
      */
@@ -301,7 +305,7 @@ class CrudManager {
 
     /**
      * Unsets an array of values on the variables array
-     * 
+     *
      * @param array     $variables      array keys to unset
      */
     public function unsetVariables($variables) {
@@ -313,7 +317,7 @@ class CrudManager {
     /**
      * Sets an array of values on the variables array,
      * overwriting existing values if needed
-     * 
+     *
      * @param array     $variables      Values to set
      */
     public function setVariables($variables)
@@ -324,26 +328,67 @@ class CrudManager {
     }
 
     /**
-     * Gets an array of key => value pairs defined by properties set up 
-     * in the form field. Can be used to easily provide static answers, or 
-     * to call all items of a given model, by id (or an overriden value_colum)
-     * with a value of given value_name
-     * 
+     * Get an array of key => value pairs, either from a controller method
+     * or from options provided in the form field definition on the controller.
+     *
      * @param  string       $tab_name           tab in which the field sits
      * @param  string       $field_name         field name
      * @return array                            array of options
      */
     public function getSelectOptions($tab_name, $field_name)
     {
-        if (!stringTest($field_name)) {
+        if (!stringTest($field_name) || !isset($this->form_fields[$tab_name][$field_name])) {
             throw new InvalidCrudFormFieldException('Invalid form field name');
         }
 
-        if (isset($this->form_fields[$tab_name]) && isset($this->form_fields[$tab_name][$field_name])) {
-            $form_field = $this->form_fields[$tab_name][$field_name];
+        $form_field = $this->form_fields[$tab_name][$field_name];
+
+        if (isset($form_field['model'])) {
+            $choices = $this->getSelectOptionsByFormField($tab_name, $field_name);
+        } else {
+            $choices = $this->getSelectOptionsByMethod($tab_name, $field_name);
         }
 
-        $manual_choices = isset($form_field['choices']) ? $form_field['choices'] : [];
+        if (isset($form_field['choices'])) {
+            $choices = $form_field['choices'] + $choices;
+        }
+
+        return $choices;
+    }
+
+    /**
+     * Gets an array of key => value pairs from a method on the controller.
+     *
+     * @param  string       $tab_name           tab in which the field sits
+     * @param  string       $field_name         field name
+     * @return array                            array of options
+     */
+    protected function getSelectOptionsByMethod($tab_name, $field_name)
+    {
+        $form_field  = $this->form_fields[$tab_name][$field_name];
+        $method_name = 'get' . studly_case($field_name) . 'Choices';
+        $action_name = getActionName();
+
+        if (!is_null($this->controller) && method_exists($this->controller, $method_name)) {
+            return $this->controller->$method_name($action_name);
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * Gets an array of key => value pairs defined by properties set up
+     * in the form field. Can be used to easily provide static answers, or
+     * to call all items of a given model, by id (or an overriden value_colum)
+     * with a value of given value_name
+     *
+     * @param  string       $tab_name           tab in which the field sits
+     * @param  string       $field_name         field name
+     * @return array                            array of options
+     */
+    protected function getSelectOptionsByFormField($tab_name, $field_name)
+    {
+        $form_field = $this->form_fields[$tab_name][$field_name];
 
         if (!isset($form_field['model'])
             || !stringTest($form_field['model'])) {

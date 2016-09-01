@@ -233,6 +233,7 @@ abstract class CrudController extends BaseController
         // Splits by name if the route has one, by path if not
         if(!empty($current_route)) {
             $route_name = $current_route->getName();
+
             if(is_null($route_name)) {
                 $separator = '/';
                 $route_name = $current_route->getPath();
