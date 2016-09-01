@@ -17,8 +17,8 @@ if (! function_exists('crud')) {
 if (! function_exists('stringTest')) {
     /**
      * Tests whether a given value is, or could be converted into, a string
+     *
      * @param  mixed      $value          Value to check
-     * 
      * @return boolean                    Whether it [is/can be] a string
      */
     function stringTest($value)
@@ -26,5 +26,20 @@ if (! function_exists('stringTest')) {
         try { (string) $value; }
         catch (Exception $e) { return false; }
         return true;
+    }
+}
+
+
+if (! function_exists('getActionName')) {
+    /**
+     * Get the action name for the curren route
+     *
+     * @return  string  Name of current action, e.g. edit
+     */
+    function getActionName()
+    {
+        $action_name = request()->route()->getActionName();
+        list($x, $name) = explode('@', Route::getCurrentRoute()->getActionName());
+        return $name;
     }
 }
