@@ -2,7 +2,7 @@
   <label for="input_{{ $name }}">{{ $field['label'] or ucwords($name) }}</label>
 
   {!! Form::select(
-    $name,
+    $name . (isset($field['multiple']) ? '[]' : ''),
     crud()->getSelectOptions($tab_name, $name),
     old($name, null),
     [
