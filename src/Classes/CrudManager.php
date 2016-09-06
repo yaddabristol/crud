@@ -392,7 +392,7 @@ class CrudManager {
 
         if (!isset($form_field['model'])
             || !stringTest($form_field['model'])) {
-            return $manual_choices;
+            return [];
         }
 
         $val_col = 'id';
@@ -408,6 +408,22 @@ class CrudManager {
 
         $db_choices = call_user_func($form_field['model'] . '::lists', $form_field['name_column'], $val_col)->toArray();
 
-        return $manual_choices + $db_choices;
+        return $db_choices;
+    }
+
+    /**
+     * Gets the correct view name for by checking to see whether it exists
+     * in the local folder (defined in this instance of crud), otherwise
+     * returning a crud:: version of it.
+     *
+     * @param  string     $view_name    name of view
+     * @return string                   full name of view
+     */
+    public function view($view_name) {
+        if(!empty($this->views_dir) && view()->exists("{$this->views_dir}.{$view_name}")) {
+          return "{$this->views_dir}.{$view_name}";
+        } else {
+          return "crud::{$view_name}";
+        }
     }
 }
