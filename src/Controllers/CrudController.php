@@ -275,21 +275,9 @@ abstract class CrudController extends BaseController
     {
         $this->beforeIndex();
 
-        $items = call_user_func($this->model.'::query');
-        $items->orderBy($this->settings['orderby'], $this->settings['order']);
-
-        if(!empty($this->preload_relationships)) {
-            foreach($this->preload_relationships as $relationship) {
-                $items->with($relationship);
-            }
-        }
+        $items = $this->getIndexQuery();
 
         if(!empty($this->display_raw)) view()->share('display_raw', $this->display_raw);
-
-        if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) &&
-            $this->request->has('search')) {
-            $items->simpleSearch($this->request->get('search'));
-        }
 
         if ($request->ajax()) {
             $output = [];
@@ -326,6 +314,43 @@ abstract class CrudController extends BaseController
      * @return void
      */
     protected function beforeIndex() {}
+
+    protected function getIndexQuery()
+    {
+        // Instantiates a blank query for the given model.
+        $query = call_user_func($this->model.'::query');
+
+        // Applies applies contents of a optional hook to the query
+        $query = $this->modifyIndexQuery($query);
+
+        // Applies basic search to query if required
+        if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) &&
+        $this->request->has('search')) {
+          $query->simpleSearch($this->request->get('search'));
+        }
+
+        // Apply order settings. If modification is needed, use the
+        // 'beforeIndex()' function hook.
+        $query->orderBy($this->settings['orderby'], $this->settings['order']);
+
+        // Pulls any relationships. Allows for complex relations, such as those
+        // with conditions ['thing' => function($relations) { ...except... }];
+        if(!empty($this->preload_relationships)) {
+          $query->with($this->preload_relationships);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Hook to apply changes to the Index query
+     *
+     * @param  Builder    $query  Original Query
+     * @return Builder            Modified Query
+     */
+    protected function modifyIndexQuery($query) {
+      return $query;
+    }
 
     /**
      * Show the form for creating a new resource
