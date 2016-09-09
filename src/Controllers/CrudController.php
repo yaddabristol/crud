@@ -318,28 +318,31 @@ abstract class CrudController extends BaseController
     protected function getIndexQuery()
     {
         // Instantiates a blank query for the given model.
-        $query = call_user_func($this->model.'::query');
+        $items = call_user_func($this->model.'::query');
 
         // Applies applies contents of a optional hook to the query
-        $query = $this->modifyIndexQuery($query);
+        $items = $this->modifyIndexQuery($items);
 
         // Applies basic search to query if required
         if(in_array('Yaddabristol\Crud\Interfaces\Searchable', class_implements($this->model)) &&
         $this->request->has('search')) {
-          $query->simpleSearch($this->request->get('search'));
+          $items->simpleSearch($this->request->get('search'));
         }
 
-        // Apply order settings. If modification is needed, use the
-        // 'beforeIndex()' function hook.
-        $query->orderBy($this->settings['orderby'], $this->settings['order']);
+        // Apply order settings if there have been no query order modifiers
+        // already added to the query.
+        $query = $items->getQuery();
+        if(is_null($query->orders) && is_null($query->unionOrders)) {
+          $items->orderBy($this->settings['orderby'], $this->settings['order']);
+        }
 
         // Pulls any relationships. Allows for complex relations, such as those
         // with conditions ['thing' => function($relations) { ...except... }];
         if(!empty($this->preload_relationships)) {
-          $query->with($this->preload_relationships);
+          $items->with($this->preload_relationships);
         }
 
-        return $query;
+        return $items;
     }
 
     /**
